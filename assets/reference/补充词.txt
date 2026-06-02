@@ -1,0 +1,407 @@
+1. 研究方法论 (Research Methodology)
+此部分词汇用于向导师阐述你的研究设计、哲学立场和具体的方法论框架。
+
+Epistemology (n.) 认识论
+
+例句: My research epistemology is grounded in constructivism, as I believe knowledge is actively co-constructed within the classroom context.
+
+释义: 我的研究认识论植根于建构主义，因为我认为知识是在课堂情明中被积极共同建构的。
+
+Methodology (n.) 方法论
+
+例句: I have developed a robust mixed-methods methodology to comprehensively address both the "what" and "why" of student disengagement.
+
+释义: 我设计了一套扎实的混合方法论，以全面解决学生学业疏离的“现状”与“成因”。
+
+Triangulation (n.) 三角互证 / 源数据交叉检验
+
+例句: To ensure the trustworthiness of my qualitative findings, I will use triangulation by comparing interview data, classroom observations, and student artifacts.
+
+释义: 为了确保定性研究结果的信度，我将通过对比访谈数据、课堂观察和学生作业进行三角互证。
+
+Phenomenology (n.) 现象学
+
+例句: I intend to employ a hermeneutic phenomenology approach to explore the lived experiences of first-generation college students.
+
+释义: 我打算采用阐释学现象学的方法，来探索第一代大学生（家庭第一代大学生）的切身生活经验。
+
+Ethnography (n.) 民族志 / 民族志研究
+
+例句: An institutional ethnography will allow me to immerse myself in the school culture to understand policy implementation from the ground up.
+
+释义: 机构民族志将使我能够沉浸在学校文化中，从基层角度理解政策的落地实施。
+
+Action Research (n.) 行动研究
+
+例句: My master’s thesis utilized action research to iteratively improve formative assessment practices in secondary English classrooms.
+
+释义: 我的硕士论文利用行动研究，在中学英语课堂中迭代改进了形成性评价的实践。
+
+Grounded Theory (n.) 扎根理论
+
+例句: Since existing literature lacks a framework for this new digital phenomenon, I will use grounded theory to construct a bottom-up model.
+
+释义: 由于现有文献缺乏针对这一新数字化现象的框架，我将使用扎根理论来构建一个自下而上的模型。
+
+2. 教育理论 (Educational Theory)
+在面试中展示深厚的理论功底（Theoretical Framework）能让导师眼前一亮。
+
+Pedagogy (n.) 教学法 / 教育学
+
+例句: I aim to investigate how culturally responsive pedagogy can bridge the achievement gap in marginalized student populations.
+
+释义: 我的目标是研究文化回应式教学法如何弥合边缘化学生群体中的成绩差距。
+
+Scaffolding (n.) 支架式教学 / 支架
+
+例句: My study examines how adaptive digital scaffolding can support self-regulated learning in online higher education.
+
+释义: 我的研究探讨了适应性数字化支架如何支持在线高等教育中的自主学习。
+
+Metacognition (n.) 元认知
+
+例句: I am deeply interested in how fostering student metacognition can enhance their problem-solving skills in STEM disciplines.
+
+释义: 我对如何培养学生的元认知以提高他们在STEM（理工科）学科中的问题解决能力深感兴趣。
+
+Differentiated Instruction (n.) 差异化教学 / 因材施教
+
+例句: Implementing differentiated instruction is challenging for novice teachers, which is the primary motivation behind my research proposal.
+
+释义: 实施差异化教学对新手教师来说充满挑战，这也是我研究计划背后的主要动机。
+
+Praxis (n.) 实践 / 理论与实践的结合
+
+例句: I want to explore the gap between theory and praxis in teacher professional development programs.
+
+释义: 我想探索教师专业发展项目中理论与实践结合之间的差距。
+
+Andragogy (n.) 成人教学法
+
+例句: While pedagogy focuses on children, my research applies principles of andragogy to examine lifelong learning in corporate settings.
+
+释义: 教学法（pedagogy）关注儿童，而我的研究则应用成人教学法的原则来考察企业环境中的终身学习。
+
+3. 学术写作 (Academic Writing)
+用于描述文献综述、逻辑推导及论文撰写等学术活动。
+
+Literature Review (n.) 文献综述
+
+例句: In my preliminary literature review, I identified a significant research gap regarding the mental health of international doctoral students.
+
+释义: 在我的初步文献综述中，我发现了一个关于国际博士生心理健康的重要研究空白。
+
+Conceptual Framework (n.) 概念框架
+
+例句: I have synthesized Self-Determination Theory and Critical Race Theory into a coherent conceptual framework for my PhD project.
+
+释义: 我将自我决定理论和批判性种族理论融合成了一个连贯的概念框架，用于我的博士项目。
+
+Synthesize (v.) 综合 / 合成（不仅是罗列，而是整合观点）
+
+例句: My goal during my PhD is to synthesize fragmented findings from cognitive science and curriculum studies.
+
+释义: 我博士期间的目标是综合认知科学和课程研究中碎片化的研究结果。
+
+Hypothesize (v.) 假设
+
+例句: Based on previous empirical studies, I hypothesize that there is a positive correlation between teacher emotional intelligence and student retention.
+
+释义: 根据以往的实证研究，我假设教师的情感智商与学生的留存率之间存在正相关关系。
+
+Critique (v./n.) 批判 / 评析
+
+例句: Rather than just accepting existing models, my research will critically critique the Eurocentric biases in global educational indicators.
+
+释义: 我的研究不仅是接受现有的模型，还将批判性地评析全球教育指标中的西方中心主义偏见。
+
+4. 统计学 (Statistics)
+定量研究（Quantitative Research）必须用到的高频统计学术语。
+
+Empirical (adj.) 实证的 / 以观察和实验为依据的
+
+例句: There is currently a lack of empirical evidence supporting the efficacy of this new AI tutoring system.
+
+释义: 目前缺乏支持这款新型AI辅导系统有效性的实证证据。
+
+Variable (n.) 变量 (Independent/Dependent Variable 自变量/因变量)
+
+例句: In this quasi-experimental design, socioeconomic status will be treated as a control variable.
+
+释义: 在这个准实验设计中，社会经济地位将被视为控制变量。
+
+Statistical Significance (n.) 统计学显著性 / 显著性差异
+
+例句: We found a p-value of less than 0.05, indicating that the intervention achieved statistical significance.
+
+释义: 我们发现p值小于0.05，表明该干预措施达到了统计学上的显著性。
+
+Generalizability (n.) 可推广性 / 普适性
+
+例句: While qualitative case studies offer depth, I plan to use a large-scale survey to increase the generalizability of the findings.
+
+释义: 虽然定性案例研究能提供深度，但我计划使用大规模问卷调查来提高研究结果的可推广性。
+
+Correlation vs. Causation (n.) 相关性与因果关系
+
+例句: My research design employs Structural Equation Modeling (SEM) to move beyond mere correlation and explore potential causation.
+
+释义: 我的研究设计采用了结构方程模型（SEM），以超越单纯的相关性，进而探索潜在的因果关系。
+
+Validity and Reliability (n.) 效度与信度
+
+例句: I will conduct a pilot study next semester to test the validity and reliability of my newly developed survey instrument.
+
+释义: 我将在下学期进行一项预实验，以测试我新开发的调查问卷工具的效度和信度。
+
+5. 面试高频词 (High-Frequency Interview Terms)
+面试官常问、你在表达个人学术动机和规划时必操练的词汇。
+
+Research Gap (n.) 研究空白 / 研究缺口
+
+例句: My project directly addresses a critical research gap at the intersection of educational technology and special education.
+
+释义: 我的项目直接针对教育技术与特殊教育交叉领域中一个关键的研究空白。
+
+Contribution (n.) 贡献（学术或实践贡献）
+
+例句: This research will make both a theoretical contribution to learning sciences and a practical contribution to teacher training.
+
+释义: 这项研究将对学习科学做出理论贡献，同时对教师培训做出实践贡献。
+
+Feasibility (n.) 可行性
+
+例句: Given my strong connections with local schools, I can guarantee the feasibility of my data collection within the three-year timeframe.
+
+释义: 鉴于我与当地学校的紧密联系，我能保证在三年期限内完成数据收集的可行性。
+
+Interdisciplinary (adj.) 跨学科的
+
+例句: I am drawn to your department because it fosters an interdisciplinary environment that aligns with my background in sociology and education.
+
+释义: 我被贵系所吸引，因为这里培养了跨学科的环境，非常契合我的社会学与教育学背景。
+
+Rationale (n.) 根本原因 / 理论依据
+
+例句: The rationale for selecting this specific case study is that this school represents a unique model of inclusive education.
+
+释义: 选择这一特定案例研究的根本原因在于，该校代表了融合教育的一种独特模式。
+
+6. 其他 (Others)
+涵盖宏观教育政策、教育公平及前沿趋势的词汇。
+
+Educational Equity (n.) 教育公平
+
+例句: My long-term career goal is to advocate for educational equity through evidence-based policy recommendation.
+
+释义: 我的长期职业目标是通过基于证据的政策建议来倡导教育公平。
+
+Marginalized (adj.) 边缘化的 / 弱势的
+
+例句: We must amplify the voices of marginalized students who are often silenced in traditional policy dialogues.
+
+释义: 我们必须放大在传统政策对话中经常被失声的边缘化学生的真实声音。
+
+Curriculum Reform (n.) 课程改革
+
+例句: I want to examine how teachers negotiate their professional identities during periods of radical curriculum reform.
+
+释义: 我想考察在激烈的课程改革时期，教师是如何协调他们的专业身份认同的。
+
+Digital Divide (n.) 数字鸿沟
+
+例句: The pandemic highlighted the severe digital divide in rural districts, which is what inspired this thesis proposal.
+
+释义: 疫情突显了农村地区严重的数字鸿沟，这也是启发这份论文提案的原因。
+
+1. 研究方法论 (Research Methodology)
+Ontology (n.) 本体论
+
+例句: Before determining my methods, I must clarify my ontology, which views educational reality as multiple and socially constructed.
+
+释义: 在确定我的具体研究方法之前，我必须明确我的本体论立场，即认为教育现实是多元且社会建构的。
+
+Positivism (n.) 实证主义
+
+例句: While traditional educational research heavily relies on positivism, I lean towards a post-positivist approach that acknowledges researcher bias.
+
+释义: 虽然传统的教育研究过度依赖实证主义，但我更倾向于承认研究者偏值的后实证主义方法。
+
+Mixed-methods Sequential Explanatory Design (n.) 混合方法顺序解释设计
+
+例句: I have chosen a mixed-methods sequential explanatory design so that the follow-up qualitative interviews can deeply explain the initial survey results.
+
+释义: 我选择了混合方法顺序解释设计，以便后续的定性访谈能够深入解释前期的问卷调查结果。
+
+Purposive Sampling (n.) 目的抽样 / 意向抽样
+
+例句: I will employ purposive sampling to recruit school principals who have at least ten years of experience in inclusive education.
+
+释义: 我将采用目的抽样，招募在融合教育领域至少有十年经验的中小学校长。
+
+Positionality (n.) 研究者定位 / 主体位置
+
+例句: In my research proposal, I explicitly address my positionality as both an insider and an outsider within the researched community.
+
+释义: 在我的研究计划中，我明确阐述了自己在被研究群体中兼具“局内人”与“局外人”的研究者定位。
+
+Member Checking (n.) 成员检验 / 受访者验证
+
+例句: To enhance qualitative validity, I will use member checking by sending transcript summaries back to the participants for feedback.
+
+释义: 为了提高定性研究的效度，我将通过把转录文本摘要发回给参与者获取反馈的方式来进行成员检验。
+
+2. 教育理论 (Educational Theory)
+Constructivism (n.) 建构主义
+
+例句: My research framework heavily draws on Vygotsky’s social constructivism, emphasizing the critical role of peer interaction in learning.
+
+释义: 我的研究框架在很大程度上借鉴了维果茨基的社会建构主义，强调了同伴互动在学习中的关键作用。
+
+Zone of Proximal Development (ZPD) (n.) 最近发展区
+
+例句: I plan to explore how AI-driven tutors can dynamically assess and target a student's Zone of Proximal Development.
+
+释义: 我计划探索AI驱动的导师如何动态评估并精准定位学生的最近发展区。
+
+Transformative Learning (n.) 变革性学习 / 转化学习
+
+例句: I want to investigate whether study-abroad programs trigger transformative learning experiences regarding students' global citizenship.
+
+释义: 我想调查留学项目是否能引发学生在世界公民意识方面的变革性学习体验。
+
+Critical Pedagogy (n.) 批判教育学
+
+例句: Influenced by Paulo Freire’s critical pedagogy, my project examines how marginalized students can develop critical consciousness.
+
+释义: 受保罗·弗莱雷批判教育学的影响，我的项目考察了边缘化学生如何发展批判性意识。
+
+Self-Efficacy (n.) 自我效能感
+
+例句: I hypothesize that high teacher self-efficacy is directly linked to lower rates of occupational burnout.
+
+释义: 我假设高水平的教师自我效能感与较低的职业倦怠率存在直接联系。
+
+Hidden Curriculum (n.) 隐性课程
+
+例句: My study aims to unearth the hidden curriculum within vocational education that reproduces socioeconomic inequalities.
+
+释义: 我的研究旨在挖掘职业教育中复制社会经济不平等的隐性课程。
+
+3. 学术写作 (Academic Writing)
+Conceptualization (n.) 概念化
+
+例句: The primary challenge of my study lies in the conceptualization of "digital competence" in a fast-evolving technological landscape.
+
+释义: 我研究的首要挑战在于，如何在快速发展的技术背景下对“数字素养”进行概念化。
+
+Operationalize (v.) 操作化 / 使具有可操作性
+
+例句: To conduct a rigorous quantitative study, I need to operationalize the abstract concept of "student engagement" into measurable behaviors.
+
+释义: 为了进行严谨的定量研究，我需要将“学生投入度”这一抽象概念操作化为可衡量的行为。
+
+Nuanced (adj.) 细致入微的 / 具有微妙差异的
+
+例句: Qualitative coding will provide a more nuanced understanding of how teachers resist or accept policy changes.
+
+释义: 定性编码将对教师如何抵制或接受政策变革提供一种更为细致入微的理解。
+
+Paucity (n.) 匮乏 / 稀少
+
+例句: Despite widespread interest in online learning, there is a paucity of empirical research on its long-term cognitive impact.
+
+释义: 尽管人们对在线学习有着广泛的兴趣，但关于其长期认知影响的实证研究却非常匮乏。
+
+Theoretical Underpinning (n.) 理论基础 / 理论支撑
+
+例句: Self-Determination Theory serves as the core theoretical underpinning for my investigation into student motivation.
+
+释义: 自我决定理论是我对学生动机进行调查的核心理论支撑。
+
+4. 统计学 (Statistics)
+Confounding Variable (n.) 混杂变量 / 干扰变量
+
+例句: In my research design, student prior knowledge must be controlled as a potential confounding variable.
+
+释义: 在我的研究设计中，学生的先验知识必须作为潜在的混杂变量予以控制。
+
+Statistical Power (n.) 统计功效
+
+例句: I calculated that a sample size of 200 participants is required to achieve sufficient statistical power for this regression analysis.
+
+释义: 我计算出需要 200 名参与者的样本量，才能为该回归分析提供足够的统计功效。
+
+Multivariate Regression (n.) 多元回归
+
+例句: I will perform a multivariate regression to analyze how various socioeconomic factors simultaneously predict academic achievement.
+
+释义: 我将进行多元回归分析，以探究各种社会经济因素如何同时预测学业成就。
+
+Cronbach's Alpha (n.) 克隆巴赫系数（衡量量表信度）
+
+例句: The survey questionnaire demonstrated high internal consistency, with a Cronbach's Alpha value of 0.88.
+
+释义: 该调查问卷显示出高内部一致性，其克隆巴赫系数为 0.88。
+
+Longitudinal Study (n.) 纵向研究 / 追踪研究
+
+例句: I propose a three-year longitudinal study to track the career trajectories of rural teacher graduates.
+
+释义: 我提议进行一项为期三年的纵向研究，以追踪农村师范毕业生的职业轨迹。
+
+5. 面试高频词 (High-Frequency Interview Terms)
+Methodological Rigor (n.) 方法论的严谨性
+
+例句: I will ensure methodological rigor by strictly adherence to established protocols for thematic analysis.
+
+释义: 我将通过严格遵守既定的主题分析协议，来确保方法论的严谨性。
+
+Pedagogical Implications (n.) 教学启示 / 教育意义
+
+例句: Beyond theoretical contributions, my findings will offer practical pedagogical implications for K-12 educators.
+
+释义: 除了理论贡献外，我的研究结果还将为 K-12 阶段的教育工作者提供实际的教学启示。
+
+Theoretical Alignment (n.) 理论契合度 / 理论一致性
+
+例句: My proposed research questions demonstrate strong theoretical alignment with your department’s ongoing project on digital equity.
+
+释义: 我提出的研究问题与贵系目前正在进行的数字公平项目具有高度的理论契合度。
+
+Deliverable (n.) 研究成果 / 阶段性成果
+
+例句: One major deliverable of my PhD project will be a validated framework for assessing teacher cultural competency.
+
+释义: 我博士项目的一个主要成果将是一个经过验证的评估教师文化能力的框架。
+
+Scholarly Discourse (n.) 学术对话 / 学术话语体系
+
+例句: I hope to contribute to the international scholarly discourse on educational decentralization through my case study in Asia.
+
+释义: 我希望通过我在亚洲的案例研究，为关于教育分权的国际学术对话做出贡献。
+
+6. 其他 (Others)
+Socioeconomic Status (SES) (n.) 社会经济地位
+
+例句: My research controls for socioeconomic status to isolate the pure effect of the new curriculum on student outcomes.
+
+释义: 我的研究控制了社会经济地位，以隔离出新课程对学生学业表现的纯粹影响。
+
+Professional Identity (n.) 专业身份认同 / 职业认同
+
+例句: I am fascinated by how pre-service teachers negotiate their professional identity during their practicum.
+
+释义: 我对实习教师在教育实习期间如何协调其专业身份认同这一课题非常着迷。
+
+Formative vs. Summative Assessment (n.) 形成性评价与终结性评价
+
+例句: I intend to examine how a balance between formative and summative assessment affects student motivation.
+
+释义: 我打算研究形成性评价与终结性评价之间的平衡如何影响学生的学习动机。
+
+Attrition Rate (n.) 流失率（常指教师流失或样本流失）
+
+例句: The alarmingly high attrition rate among special education teachers is the core issue my study seeks to solve.
+
+释义: 特殊教育教师令人担忧的高流失率，正是我的研究试图解决的核心问题。

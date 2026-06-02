@@ -1,0 +1,161 @@
+/**
+ * api.js — AI API 调用封装
+ * 通过本地 Flask 代理 (/api/chat) 调用 DeepSeek API
+ */
+
+const API = (() => {
+    /**
+     * 通用聊天请求
+     * @param {Array} messages - [{role, content}, ...]
+     * @param {object} options - {temperature, max_tokens, response_format}
+     * @returns {Promise<{content: string, usage: object}>}
+     */
+    async function chat(messages, options = {}) {
+        const { temperature = 0.7, max_tokens = 1000, response_format = null } = options;
+
+        const body = { messages, temperature, max_tokens };
+        if (response_format) {
+            body.response_format = response_format;
+        }
+
+        // 附带浏览器端存储的 API Key
+        const apiKey = Storage.getApiKey();
+        if (apiKey) {
+            body.api_key = apiKey;
+        }
+
+        const resp = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+        });
+
+        const data = await resp.json();
+
+        if (!resp.ok) {
+            throw new Error(data.error || `请求失败 (${resp.status})`);
+        }
+
+        return { content: data.content, usage: data.usage };
+    }
+
+    /**
+     * 从 AI 响应中提取 JSON（容错处理）
+     * AI 有时会在 JSON 外面包 markdown 代码块或额外文字
+     */
+    function extractJSON(text) {
+        // 尝试直接解析
+        try {
+            return JSON.parse(text);
+        } catch (e) {
+            // 提取 ```json ... ``` 中的内容
+            const codeBlock = text.match(/```(?:json)?\s*\n?([\s\S]*?)```/);
+            if (codeBlock) {
+                try {
+                    return JSON.parse(codeBlock[1].trim());
+                } catch (e2) { /* 继续尝试 */ }
+            }
+            // 提取第一个 { 到最后一个 } 之间的内容
+            const firstBrace = text.indexOf('{');
+            const lastBrace = text.lastIndexOf('}');
+            if (firstBrace !== -1 && lastBrace > firstBrace) {
+                try {
+                    return JSON.parse(text.slice(firstBrace, lastBrace + 1));
+                } catch (e3) { /* 最后一次尝试失败 */ }
+            }
+            throw new Error('无法解析 AI 返回的 JSON 格式');
+        }
+    }
+
+    /**
+     * 生成面试问题
+     * @param {Array} learnedWords - 用户已学的单词列表
+     * @returns {Promise<{question: string}>}
+     */
+    async function generateQuestion(learnedWords) {
+        // 取最多 15 个已学单词作为上下文
+        const wordList = learnedWords.slice(0, 15)
+            .map(w => w.word)
+            .join(', ');
+
+        const systemPrompt = `You are an Education PhD admissions panel member at a Western university, interviewing a Chinese applicant.
+
+Generate ONE interview question in English that naturally incorporates or relates to 1-2 of these academic concepts: ${wordList || 'education research methodology'}.
+
+Guidelines:
+- The question should be realistic for a PhD interview (NOT a vocabulary test)
+- The applicant should be able to answer in 1-2 minutes
+- Use natural, conversational English
+- Focus on the applicant's research interests, academic experience, or views on education
+
+Respond ONLY with a JSON object: {"question": "the interview question here"}`;
+
+        const { content } = await chat([
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: 'Generate an interview question.' },
+        ], { temperature: 0.9, max_tokens: 200 });
+
+        return extractJSON(content);
+    }
+
+    /**
+     * 评分回答
+     * @param {string} question - 面试问题
+     * @param {string} answer - 用户回答
+     * @returns {Promise<{score: number, feedback: string, strengths: string[], weaknesses: string[]}>}
+     */
+    async function scoreAnswer(question, answer) {
+        const systemPrompt = `You are an Education PhD interview evaluator. Score this candidate's English answer to the interview question.
+
+Question: "${question}"
+Answer: "${answer}"
+
+Evaluate on four dimensions:
+1. Relevance to the question (30% of score)
+2. Use of academic/education vocabulary (30% of score)
+3. Clarity and organization (20% of score)
+4. Depth of critical thinking (20% of score)
+
+Respond ONLY with a JSON object:
+{
+  "score": <0-100 integer>,
+  "feedback": "<2-3 sentences of constructive feedback in Chinese (简体中文)>",
+  "strengths": ["<one specific strength in English>"],
+  "weaknesses": ["<one specific area to improve in English>"]
+}`;
+
+        const { content } = await chat([
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: 'Please evaluate this answer.' },
+        ], { temperature: 0.5, max_tokens: 500 });
+
+        return extractJSON(content);
+    }
+
+    /**
+     * 检查 API 连接是否正常
+     * @returns {Promise<boolean>}
+     */
+    async function testConnection() {
+        try {
+            const apiKey = Storage.getApiKey();
+            const body = apiKey ? { api_key: apiKey } : {};
+            const resp = await fetch('/api/health', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
+            });
+            const data = await resp.json();
+            return data.apiKeyConfigured === true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    return {
+        chat,
+        generateQuestion,
+        scoreAnswer,
+        testConnection,
+    };
+})();

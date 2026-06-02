@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语单词学习助手 — 教育学博士备考</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+
+    <!-- ===== 顶部标题栏 ===== -->
+    <header class="app-header">
+        <h1 class="app-title">📚 英语单词学习助手</h1>
+        <span class="app-subtitle">教育学博士备考</span>
+        <button class="btn-settings" id="btnSettings" title="设置">⚙️</button>
+    </header>
+
+    <!-- ===== 标签导航 ===== -->
+    <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="vocab">📝 单词记忆练习</button>
+        <button class="tab-btn" data-tab="spelling">✍️ 单词拼写</button>
+        <button class="tab-btn" data-tab="interview">🎤 模拟面试问答</button>
+    </nav>
+
+    <!-- ===== 模块1: 单词记忆练习 ===== -->
+    <main class="module" id="module-vocab">
+        <!-- 返回按钮（练习/复习中可见） -->
+        <button class="btn-back" id="btnVocabBack" style="display:none;">← 返回</button>
+        <!-- 进度条区域 -->
+        <div class="progress-area" id="vocabProgressArea" style="display:none;">
+            <div class="progress-bar">
+                <div class="progress-fill" id="vocabProgressFill"></div>
+            </div>
+            <span class="progress-text" id="vocabProgressText">0 / 10</span>
+        </div>
+        <!-- 统计信息 -->
+        <div class="stats-row" id="vocabStats"></div>
+        <!-- 单词卡片 -->
+        <div class="word-card" id="vocabCard">
+            <button class="btn-pronounce" id="btnVocabPronounce" title="点击发音">🔊 点击发音</button>
+            <div class="word-english" id="vocabWord"></div>
+            <div class="word-phonetic" id="vocabPhonetic"></div>
+            <!-- 例句区域 -->
+            <div class="example-section" id="vocabExampleSection" style="display:none;">
+                <div class="example-label">💬 面试例句</div>
+                <div class="example-text" id="vocabExampleText"></div>
+                <div class="example-actions">
+                    <button class="btn-sm btn-primary" id="btnExamplePronounce">🔊 播放例句</button>
+                    <button class="btn-sm btn-record" id="btnExampleRecord">🎤 跟读录音</button>
+                    <button class="btn-sm btn-play" id="btnExamplePlay" style="display:none;">▶️ 听我的录音</button>
+                </div>
+                <div class="recording-status" id="exampleRecordingStatus" style="display:none;"></div>
+                <audio id="exampleAudioPlayer" controls style="display:none;"></audio>
+            </div>
+            <div class="options-grid" id="vocabOptions"></div>
+        </div>
+        <!-- 反馈区域 -->
+        <div class="feedback-area" id="vocabFeedback" style="display:none;"></div>
+        <!-- 底部操作按钮 -->
+        <div class="action-bar" id="vocabActionBar" style="display:none;">
+            <button class="btn-action btn-unsure" id="btnUnsure">🤔 记不清</button>
+            <button class="btn-action btn-wrong" id="btnWrong">✗ 没记住</button>
+            <button class="btn-action btn-correct" id="btnCorrect">✓ 记住了</button>
+        </div>
+        <!-- 初始界面 -->
+        <div class="welcome-panel" id="vocabWelcome">
+            <div class="welcome-stats" id="vocabWelcomeStats"></div>
+            <div class="welcome-buttons">
+                <button class="btn-welcome btn-start" id="btnVocabStart">
+                    <span class="btn-icon">📝</span>
+                    <span class="btn-label">开始练习</span>
+                    <span class="btn-desc">学习新词</span>
+                </button>
+                <button class="btn-welcome btn-review" id="btnVocabReview">
+                    <span class="btn-icon">🔄</span>
+                    <span class="btn-label">今日复习</span>
+                    <span class="btn-desc" id="reviewBtnDesc">已记住的单词</span>
+                </button>
+            </div>
+            <button class="btn-mastered-link" id="btnShowMastered">
+                ⭐ 已掌握 <span id="masteredCountBadge">0</span> 个单词
+            </button>
+            <div class="add-word-area">
+                <button class="btn-link" id="btnAddWord">+ 添加新单词</button>
+            </div>
+        </div>
+
+        <!-- 分类选择界面 -->
+        <div class="category-view" id="categoryView" style="display:none;">
+            <h3>📂 选择要练习的分类</h3>
+            <div class="category-grid" id="categoryGrid"></div>
+            <button class="btn-link" id="btnCategoryAll" style="margin-top:12px;">或 全部单词（不限分类）</button>
+        </div>
+
+        <!-- 已掌握单词视图 -->
+        <div class="mastered-view" id="masteredView" style="display:none;">
+            <div class="mastered-header">
+                <button class="btn-link" id="btnMasteredBack">← 返回</button>
+                <h3>⭐ 已掌握的单词</h3>
+                <span class="mastered-total" id="masteredTotalLabel"></span>
+            </div>
+            <div class="mastered-list" id="masteredList"></div>
+            <div class="empty-state" id="masteredEmpty" style="display:none;">
+                <div class="empty-icon">📭</div>
+                <h3>还没有已掌握的单词</h3>
+                <p>在"今日复习"中累积 2 次记住同一单词，即可标记为已掌握</p>
+            </div>
+        </div>
+
+        <!-- 空状态 / 完成状态 -->
+        <div class="empty-state" id="vocabEmpty" style="display:none;">
+            <div class="empty-icon">🎉</div>
+            <h3 id="vocabEmptyTitle">开始你的单词学习之旅吧！</h3>
+            <p id="vocabEmptyDesc"></p>
+        </div>
+        <!-- 添加单词面板（默认隐藏） -->
+        <div class="add-word-panel" id="addWordPanel" style="display:none;">
+            <h4>添加新单词</h4>
+            <div class="form-row">
+                <input type="text" id="addWordEnglish" placeholder="英文单词（必填）">
+                <input type="text" id="addWordChinese" placeholder="中文意思（必填）">
+                <select id="addWordCategory">
+                    <option value="research_methods">研究方法论</option>
+                    <option value="education_theory">教育理论</option>
+                    <option value="academic_writing">学术写作</option>
+                    <option value="statistics">统计学</option>
+                    <option value="interview_terms">面试高频词</option>
+                    <option value="other">其他</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <input type="text" id="addWordPhonetic" placeholder="音标（可选，留空自动生成）">
+                <input type="text" id="addWordExample" placeholder="例句（可选）">
+            </div>
+            <div class="form-actions">
+                <button class="btn-primary btn-sm" id="btnAddWordSubmit">添加</button>
+                <button class="btn-link" id="btnAddWordCancel">取消</button>
+                <button class="btn-link" id="btnBatchImport">批量导入</button>
+            </div>
+            <!-- 批量导入区域（默认隐藏） -->
+            <div class="batch-import-area" id="batchImportArea" style="display:none;">
+                <p>每行一个单词，格式: <code>英文单词, 中文意思</code></p>
+                <textarea id="batchImportText" rows="6" placeholder="pedagogy, 教育学&#10;methodology, 方法论&#10;curriculum, 课程"></textarea>
+                <button class="btn-primary btn-sm" id="btnBatchImportSubmit">批量导入</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== 模块2: 单词拼写 ===== -->
+    <main class="module" id="module-spelling" style="display:none;">
+        <div class="stats-row" id="spellingStats"></div>
+        <div class="word-card">
+            <button class="btn-pronounce btn-pronounce-large" id="btnSpellingPronounce" title="点击听发音">
+                🔊<br><small>点击听发音</small>
+            </button>
+            <p class="hint-text">请听发音，拼写单词</p>
+            <input type="text" class="spelling-input" id="spellingInput" placeholder="在此输入拼写..." autocomplete="off" autocorrect="off" spellcheck="false">
+            <button class="btn-primary" id="btnSpellingSubmit">提交拼写</button>
+            <div class="spelling-result" id="spellingResult" style="display:none;"></div>
+            <button class="btn-primary" id="btnSpellingNext" style="display:none;">下一题 →</button>
+        </div>
+        <div class="empty-state" id="spellingEmpty">
+            <div class="empty-icon">📝</div>
+            <h3>还没有记住的单词</h3>
+            <p>先去"单词记忆练习"标记一些单词为"记住了"吧！</p>
+        </div>
+    </main>
+
+    <!-- ===== 模块3: 模拟面试问答 ===== -->
+    <main class="module" id="module-interview" style="display:none;">
+        <div class="stats-row" id="interviewStats"></div>
+        <div class="word-card">
+            <div class="interview-section">
+                <h4>🎤 面试官提问</h4>
+                <div class="interview-actions">
+                    <button class="btn-primary" id="btnPlayQuestion">🔊 播放问题</button>
+                    <button class="btn-link" id="btnShowQuestion">📋 显示文字</button>
+                </div>
+                <div class="question-text" id="questionText" style="display:none;"></div>
+            </div>
+            <div class="interview-section">
+                <h4>🗣️ 你的回答</h4>
+                <div class="recording-area">
+                    <button class="btn-record" id="btnRecord">🎤 点击开始录音</button>
+                    <span class="recording-indicator" id="recordingIndicator" style="display:none;">🔴 录音中...</span>
+                    <div class="transcript-box" id="transcriptBox"></div>
+                    <div class="recording-actions" id="recordingActions" style="display:none;">
+                        <button class="btn-link" id="btnStopRecord">⏹ 停止录音</button>
+                        <button class="btn-link" id="btnReRecord">🔄 重新录音</button>
+                    </div>
+                </div>
+                <textarea class="text-answer" id="textAnswer" placeholder="或者在这里直接输入你的回答...（语音识别不可用时的备选方案）"></textarea>
+            </div>
+            <button class="btn-primary" id="btnSubmitAnswer">提交评分</button>
+            <div class="score-result" id="scoreResult" style="display:none;"></div>
+            <button class="btn-primary" id="btnNextQuestion" style="display:none;">下一题 →</button>
+            <button class="btn-link" id="btnRetryQueue" style="display:none;">复习错题 (<span id="retryCount">0</span>)</button>
+        </div>
+        <div class="empty-state" id="interviewEmpty">
+            <div class="empty-icon">🎤</div>
+            <h3>模拟面试练习</h3>
+            <p id="interviewEmptyDesc">AI 将根据你学过的单词生成教育学面试问题</p>
+            <button class="btn-primary" id="btnInterviewStart">开始面试</button>
+        </div>
+    </main>
+
+    <!-- ===== 设置面板（弹窗） ===== -->
+    <div class="modal-overlay" id="settingsModal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚙️ 设置</h3>
+                <button class="btn-close" id="btnSettingsClose">✕</button>
+            </div>
+            <div class="modal-body">
+                <!-- API Key -->
+                <div class="setting-group">
+                    <label>DeepSeek API Key</label>
+                    <div class="input-row">
+                        <input type="password" id="settingApiKey" placeholder="粘贴你的 API Key...">
+                        <button class="btn-primary btn-sm" id="btnTestConnection">测试连接</button>
+                    </div>
+                    <small id="apiKeyStatus"></small>
+                </div>
+                <!-- 每日单词数 -->
+                <div class="setting-group">
+                    <label>每日单词数量: <span id="dailyCountLabel">10</span></label>
+                    <input type="range" id="settingDailyCount" min="5" max="20" value="10" step="1">
+                </div>
+                <!-- 评分及格线 -->
+                <div class="setting-group">
+                    <label>面试评分及格线: <span id="thresholdLabel">60</span> 分</label>
+                    <input type="range" id="settingThreshold" min="40" max="80" value="60" step="5">
+                </div>
+                <!-- 语音选择 -->
+                <div class="setting-group">
+                    <label>英文发音语音</label>
+                    <select id="settingVoice"></select>
+                </div>
+                <!-- 语速 -->
+                <div class="setting-group">
+                    <label>发音语速: <span id="rateLabel">1.0</span>x</label>
+                    <input type="range" id="settingRate" min="0.5" max="1.5" value="1.0" step="0.1">
+                </div>
+                <!-- 数据管理 -->
+                <div class="setting-group">
+                    <label>数据管理</label>
+                    <div class="btn-row">
+                        <button class="btn-primary btn-sm" id="btnExportData">📥 导出数据</button>
+                        <button class="btn-link btn-sm" id="btnImportData">📤 导入数据</button>
+                    </div>
+                    <input type="file" id="importFileInput" accept=".json" style="display:none;">
+                </div>
+                <!-- 重置 -->
+                <div class="setting-group setting-danger">
+                    <label>危险操作</label>
+                    <button class="btn-danger btn-sm" id="btnResetData">⚠️ 重置所有进度</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 确认对话框 -->
+    <div class="modal-overlay" id="confirmModal" style="display:none;">
+        <div class="modal-content modal-small">
+            <div class="modal-body">
+                <p id="confirmMessage"></p>
+                <div class="btn-row">
+                    <button class="btn-danger btn-sm" id="btnConfirmYes">确认</button>
+                    <button class="btn-link" id="btnConfirmNo">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== JavaScript ===== -->
+    <script src="js/storage.js"></script>
+    <script src="js/tts.js"></script>
+    <script src="js/stt.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/vocabulary.js"></script>
+    <script src="js/spelling.js"></script>
+    <script src="js/interview.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1047 @@
+[
+  {
+    "id": "w001",
+    "word": "pedagogy",
+    "pronunciation": "/ˈpedəɡɒdʒi/",
+    "chinese": "教育学；教学法",
+    "category": "education_theory",
+    "example": "My teaching philosophy is deeply rooted in student-centered pedagogy that values each learner's unique experience."
+  },
+  {
+    "id": "w002",
+    "word": "curriculum",
+    "pronunciation": "/kəˈrɪkjələm/",
+    "chinese": "课程",
+    "category": "education_theory",
+    "example": "In my master's program, I helped redesign the curriculum to better integrate technology into classroom instruction."
+  },
+  {
+    "id": "w003",
+    "word": "constructivism",
+    "pronunciation": "/kənˈstrʌktɪvɪzəm/",
+    "chinese": "建构主义",
+    "category": "education_theory",
+    "example": "I find constructivism particularly compelling because it views learners as active participants in building their own understanding."
+  },
+  {
+    "id": "w004",
+    "word": "epistemology",
+    "pronunciation": "/ɪˌpɪstəˈmɒlədʒi/",
+    "chinese": "认识论",
+    "category": "education_theory",
+    "example": "My research draws on social epistemology to examine how knowledge is constructed within collaborative learning environments."
+  },
+  {
+    "id": "w005",
+    "word": "ontology",
+    "pronunciation": "/ɒnˈtɒlədʒi/",
+    "chinese": "本体论",
+    "category": "education_theory",
+    "example": "A clear ontology is essential because it defines what we believe exists and can be known in our research context."
+  },
+  {
+    "id": "w006",
+    "word": "paradigm",
+    "pronunciation": "/ˈpærədaɪm/",
+    "chinese": "范式；典范",
+    "category": "education_theory",
+    "example": "I believe we need a paradigm shift in how we approach assessment, moving away from standardized testing toward more holistic evaluation."
+  },
+  {
+    "id": "w007",
+    "word": "scaffolding",
+    "pronunciation": "/ˈskæfəldɪŋ/",
+    "chinese": "支架式教学",
+    "category": "education_theory",
+    "example": "Effective scaffolding allows teachers to gradually release responsibility to students as they become more confident and capable."
+  },
+  {
+    "id": "w008",
+    "word": "differentiation",
+    "pronunciation": "/ˌdɪfərenʃiˈeɪʃn/",
+    "chinese": "差异化教学",
+    "category": "education_theory",
+    "example": "In my teaching experience, differentiation has been key to meeting the diverse needs of students with varying language proficiency levels."
+  },
+  {
+    "id": "w009",
+    "word": "inclusion",
+    "pronunciation": "/ɪnˈkluːʒn/",
+    "chinese": "全纳教育；包容",
+    "category": "education_theory",
+    "example": "My doctoral research will focus on inclusion, specifically exploring how mainstream schools can better support students with special educational needs."
+  },
+  {
+    "id": "w010",
+    "word": "equity",
+    "pronunciation": "/ˈekwəti/",
+    "chinese": "公平；平等",
+    "category": "education_theory",
+    "example": "I am passionate about educational equity, and my research aims to identify strategies that close the achievement gap in under-resourced communities."
+  },
+  {
+    "id": "w011",
+    "word": "diversity",
+    "pronunciation": "/daɪˈvɜːsəti/",
+    "chinese": "多样性",
+    "category": "education_theory",
+    "example": "I believe that cultural diversity enriches the classroom, and I want to study how teachers can leverage it as a pedagogical resource."
+  },
+  {
+    "id": "w012",
+    "word": "multicultural",
+    "pronunciation": "/ˌmʌltiˈkʌltʃərəl/",
+    "chinese": "多元文化的",
+    "category": "education_theory",
+    "example": "My previous research examined multicultural education policies and their implementation in urban primary schools."
+  },
+  {
+    "id": "w013",
+    "word": "literacy",
+    "pronunciation": "/ˈlɪtərəsi/",
+    "chinese": "读写能力；素养",
+    "category": "education_theory",
+    "example": "Digital literacy is a central theme in my proposed research, as I investigate how technology shapes reading practices among adolescents."
+  },
+  {
+    "id": "w014",
+    "word": "cognition",
+    "pronunciation": "/kɒɡˈnɪʃn/",
+    "chinese": "认知",
+    "category": "education_theory",
+    "example": "Understanding cognition helps educators design learning experiences that align with how the brain processes and retains new information."
+  },
+  {
+    "id": "w015",
+    "word": "metacognition",
+    "pronunciation": "/ˌmetəkɒɡˈnɪʃn/",
+    "chinese": "元认知",
+    "category": "education_theory",
+    "example": "I am particularly interested in metacognition — how students become aware of their own learning strategies and regulate their thinking."
+  },
+  {
+    "id": "w016",
+    "word": "behaviorism",
+    "pronunciation": "/bɪˈheɪvjərɪzəm/",
+    "chinese": "行为主义",
+    "category": "education_theory",
+    "example": "While behaviorism offers useful insights into habit formation, I believe it is insufficient for explaining higher-order thinking and creativity."
+  },
+  {
+    "id": "w017",
+    "word": "assessment",
+    "pronunciation": "/əˈsesmənt/",
+    "chinese": "评估；评价",
+    "category": "education_theory",
+    "example": "My thesis argues that formative assessment, when used effectively, can significantly improve student outcomes without increasing teacher workload."
+  },
+  {
+    "id": "w018",
+    "word": "motivation",
+    "pronunciation": "/ˌməʊtɪˈveɪʃn/",
+    "chinese": "动机；动力",
+    "category": "education_theory",
+    "example": "A key question driving my research is how to sustain intrinsic motivation among English language learners in exam-oriented education systems."
+  },
+  {
+    "id": "w019",
+    "word": "methodology",
+    "pronunciation": "/ˌmeθəˈdɒlədʒi/",
+    "chinese": "方法论",
+    "category": "research_methods",
+    "example": "For my doctoral research, I plan to adopt a mixed-methods methodology to capture both statistical trends and lived experiences."
+  },
+  {
+    "id": "w020",
+    "word": "qualitative",
+    "pronunciation": "/ˈkwɒlɪtətɪv/",
+    "chinese": "定性的；质性的",
+    "category": "research_methods",
+    "example": "I prefer qualitative approaches because they allow me to explore the depth and complexity of participants' perspectives through interviews."
+  },
+  {
+    "id": "w021",
+    "word": "quantitative",
+    "pronunciation": "/ˈkwɒntɪtətɪv/",
+    "chinese": "定量的",
+    "category": "research_methods",
+    "example": "I chose a quantitative design to measure the effect of the intervention across a large sample of participants."
+  },
+  {
+    "id": "w022",
+    "word": "sampling",
+    "pronunciation": "/ˈsɑːmplɪŋ/",
+    "chinese": "抽样",
+    "category": "research_methods",
+    "example": "I used stratified random sampling to ensure my participant pool reflected the demographic diversity of the school district."
+  },
+  {
+    "id": "w023",
+    "word": "validity",
+    "pronunciation": "/vəˈlɪdəti/",
+    "chinese": "效度",
+    "category": "research_methods",
+    "example": "To ensure validity, I triangulated my findings with classroom observations and teacher interviews."
+  },
+  {
+    "id": "w024",
+    "word": "reliability",
+    "pronunciation": "/rɪˌlaɪəˈbɪləti/",
+    "chinese": "信度",
+    "category": "research_methods",
+    "example": "I established reliability by having two independent coders analyze the same set of interview transcripts and calculating inter-rater agreement."
+  },
+  {
+    "id": "w025",
+    "word": "triangulation",
+    "pronunciation": "/traɪˌæŋɡjʊˈleɪʃn/",
+    "chinese": "三角验证",
+    "category": "research_methods",
+    "example": "Triangulation strengthened my study by cross-checking survey data with in-depth interviews and document analysis."
+  },
+  {
+    "id": "w026",
+    "word": "ethnography",
+    "pronunciation": "/eθˈnɒɡrəfi/",
+    "chinese": "民族志",
+    "category": "research_methods",
+    "example": "I am drawn to ethnography because it allows me to immerse myself in the school environment and understand the culture from the inside."
+  },
+  {
+    "id": "w027",
+    "word": "case study",
+    "pronunciation": "/keɪs ˈstʌdi/",
+    "chinese": "案例研究",
+    "category": "research_methods",
+    "example": "My master's dissertation was a case study of one rural primary school's efforts to implement bilingual education."
+  },
+  {
+    "id": "w028",
+    "word": "longitudinal",
+    "pronunciation": "/ˌlɒndʒɪˈtjuːdɪnl/",
+    "chinese": "纵向的",
+    "category": "research_methods",
+    "example": "Ideally, I would conduct a longitudinal study to track how students' language proficiency develops over their three years of middle school."
+  },
+  {
+    "id": "w029",
+    "word": "cross-sectional",
+    "pronunciation": "/krɒs ˈsekʃənl/",
+    "chinese": "横断面的",
+    "category": "research_methods",
+    "example": "Given the time constraints of a PhD, a cross-sectional design may be more practical while still yielding valuable comparative data."
+  },
+  {
+    "id": "w030",
+    "word": "variable",
+    "pronunciation": "/ˈveəriəbl/",
+    "chinese": "变量",
+    "category": "research_methods",
+    "example": "In my study, the independent variable is the type of feedback given, while the dependent variable is students' writing improvement."
+  },
+  {
+    "id": "w031",
+    "word": "hypothesis",
+    "pronunciation": "/haɪˈpɒθəsɪs/",
+    "chinese": "假设",
+    "category": "research_methods",
+    "example": "My hypothesis is that students who receive peer feedback will show greater improvement than those who only receive teacher feedback."
+  },
+  {
+    "id": "w032",
+    "word": "bias",
+    "pronunciation": "/ˈbaɪəs/",
+    "chinese": "偏差",
+    "category": "research_methods",
+    "example": "I am careful to acknowledge my own bias as a former teacher and use reflexivity to minimize its impact on data interpretation."
+  },
+  {
+    "id": "w033",
+    "word": "generalization",
+    "pronunciation": "/ˌdʒenrəlaɪˈzeɪʃn/",
+    "chinese": "概括；推广",
+    "category": "research_methods",
+    "example": "While a small sample limits generalization, the findings still offer valuable insights that can inform practice in similar contexts."
+  },
+  {
+    "id": "w034",
+    "word": "mixed methods",
+    "pronunciation": "/mɪkst ˈmeθədz/",
+    "chinese": "混合方法",
+    "category": "research_methods",
+    "example": "I chose a mixed methods approach because quantitative data alone cannot capture the richness of students' learning experiences."
+  },
+  {
+    "id": "w035",
+    "word": "phenomenology",
+    "pronunciation": "/fɪˌnɒmɪˈnɒlədʒi/",
+    "chinese": "现象学",
+    "category": "research_methods",
+    "example": "Phenomenology is well-suited to my research question because I want to understand what it feels like to be a first-generation doctoral student."
+  },
+  {
+    "id": "w036",
+    "word": "grounded theory",
+    "pronunciation": "/ɡraʊndɪd ˈθɪəri/",
+    "chinese": "扎根理论",
+    "category": "research_methods",
+    "example": "Rather than testing an existing framework, I used grounded theory to let themes emerge organically from the interview data."
+  },
+  {
+    "id": "w037",
+    "word": "pilot study",
+    "pronunciation": "/ˈpaɪlət ˈstʌdi/",
+    "chinese": "先导研究",
+    "category": "research_methods",
+    "example": "I plan to conduct a pilot study in the first semester to test my interview protocol and refine my research questions."
+  },
+  {
+    "id": "w038",
+    "word": "ethics",
+    "pronunciation": "/ˈeθɪks/",
+    "chinese": "伦理；道德规范",
+    "category": "research_methods",
+    "example": "Research ethics are paramount in my work — all participants gave informed consent, and data was fully anonymized."
+  },
+  {
+    "id": "w039",
+    "word": "abstract",
+    "pronunciation": "/ˈæbstrækt/",
+    "chinese": "摘要",
+    "category": "academic_writing",
+    "example": "The abstract should clearly convey the research problem, methodology, key findings, and significance of your study."
+  },
+  {
+    "id": "w040",
+    "word": "dissertation",
+    "pronunciation": "/ˌdɪsəˈteɪʃn/",
+    "chinese": "博士论文",
+    "category": "academic_writing",
+    "example": "My dissertation will consist of three interrelated studies examining teacher identity development in multilingual classrooms."
+  },
+  {
+    "id": "w041",
+    "word": "literature review",
+    "pronunciation": "/ˈlɪtrətʃə rɪˈvjuː/",
+    "chinese": "文献综述",
+    "category": "academic_writing",
+    "example": "My literature review revealed a significant gap in research on how Chinese EFL teachers adapt Western pedagogies to local contexts."
+  },
+  {
+    "id": "w042",
+    "word": "theoretical framework",
+    "pronunciation": "/θɪəˈretɪkl ˈfreɪmwɜːk/",
+    "chinese": "理论框架",
+    "category": "academic_writing",
+    "example": "My theoretical framework integrates Vygotsky's sociocultural theory with contemporary research on teacher identity."
+  },
+  {
+    "id": "w043",
+    "word": "findings",
+    "pronunciation": "/ˈfaɪndɪŋz/",
+    "chinese": "研究发现",
+    "category": "academic_writing",
+    "example": "The key findings indicate that peer collaboration significantly improved students' academic writing skills over one semester."
+  },
+  {
+    "id": "w044",
+    "word": "implications",
+    "pronunciation": "/ˌɪmplɪˈkeɪʃnz/",
+    "chinese": "启示；影响",
+    "category": "academic_writing",
+    "example": "The implications of this research extend beyond the classroom, offering insights for curriculum developers and education policy makers."
+  },
+  {
+    "id": "w045",
+    "word": "significance",
+    "pronunciation": "/sɪɡˈnɪfɪkəns/",
+    "chinese": "显著性；意义",
+    "category": "academic_writing",
+    "example": "The difference between the two groups reached statistical significance, confirming that the intervention had a measurable effect."
+  },
+  {
+    "id": "w046",
+    "word": "limitation",
+    "pronunciation": "/ˌlɪmɪˈteɪʃn/",
+    "chinese": "局限性",
+    "category": "academic_writing",
+    "example": "I acknowledge that the small sample size is a limitation, and I suggest that future research replicate this study on a larger scale."
+  },
+  {
+    "id": "w047",
+    "word": "contribution",
+    "pronunciation": "/ˌkɒntrɪˈbjuːʃn/",
+    "chinese": "贡献",
+    "category": "academic_writing",
+    "example": "My intended contribution is to bridge the gap between theory and practice in how teachers use formative assessment in language classrooms."
+  },
+  {
+    "id": "w048",
+    "word": "synthesize",
+    "pronunciation": "/ˈsɪnθəsaɪz/",
+    "chinese": "综合；整合",
+    "category": "academic_writing",
+    "example": "In my literature review, I synthesize findings from over fifty studies to identify common themes and contradictions."
+  },
+  {
+    "id": "w049",
+    "word": "critique",
+    "pronunciation": "/krɪˈtiːk/",
+    "chinese": "批判；评论",
+    "category": "academic_writing",
+    "example": "A strong academic argument does more than summarize existing work; it offers a thoughtful critique of methods and assumptions."
+  },
+  {
+    "id": "w050",
+    "word": "argument",
+    "pronunciation": "/ˈɑːɡjumənt/",
+    "chinese": "论点；论证",
+    "category": "academic_writing",
+    "example": "My central argument is that teacher professional development must be context-specific rather than one-size-fits-all."
+  },
+  {
+    "id": "w051",
+    "word": "peer review",
+    "pronunciation": "/pɪə rɪˈvjuː/",
+    "chinese": "同行评审",
+    "category": "academic_writing",
+    "example": "Receiving constructive peer review feedback has been invaluable in strengthening my manuscript before submission."
+  },
+  {
+    "id": "w052",
+    "word": "plagiarism",
+    "pronunciation": "/ˈpleɪdʒərɪzəm/",
+    "chinese": "抄袭；剽窃",
+    "category": "academic_writing",
+    "example": "Understanding proper citation practices is essential to uphold academic integrity and avoid plagiarism."
+  },
+  {
+    "id": "w053",
+    "word": "citation",
+    "pronunciation": "/saɪˈteɪʃn/",
+    "chinese": "引用",
+    "category": "academic_writing",
+    "example": "I use APA citation style throughout my paper because it is the standard in education research."
+  },
+  {
+    "id": "w054",
+    "word": "appendix",
+    "pronunciation": "/əˈpendɪks/",
+    "chinese": "附录",
+    "category": "academic_writing",
+    "example": "The full interview guide and coding scheme are included in the appendix for transparency and replicability."
+  },
+  {
+    "id": "w055",
+    "word": "correlation",
+    "pronunciation": "/ˌkɒrəˈleɪʃn/",
+    "chinese": "相关；关联",
+    "category": "statistics",
+    "example": "I found a strong positive correlation between time spent on reading and vocabulary acquisition among middle school students."
+  },
+  {
+    "id": "w056",
+    "word": "regression",
+    "pronunciation": "/rɪˈɡreʃn/",
+    "chinese": "回归",
+    "category": "statistics",
+    "example": "I used multiple regression analysis to determine which factors most strongly predicted student achievement."
+  },
+  {
+    "id": "w057",
+    "word": "standard deviation",
+    "pronunciation": "/ˈstændəd ˌdiːviˈeɪʃn/",
+    "chinese": "标准差",
+    "category": "statistics",
+    "example": "The standard deviation was relatively large, indicating considerable variation in how individual students responded to the intervention."
+  },
+  {
+    "id": "w058",
+    "word": "p-value",
+    "pronunciation": "/piː ˈvæljuː/",
+    "chinese": "P值",
+    "category": "statistics",
+    "example": "The p-value was below 0.01, so I rejected the null hypothesis and concluded that the difference was statistically significant."
+  },
+  {
+    "id": "w059",
+    "word": "ANOVA",
+    "pronunciation": "/əˈnəʊvə/",
+    "chinese": "方差分析",
+    "category": "statistics",
+    "example": "I ran a one-way ANOVA to compare the mean scores across the three different teaching conditions."
+  },
+  {
+    "id": "w060",
+    "word": "chi-square",
+    "pronunciation": "/kaɪ skweə/",
+    "chinese": "卡方检验",
+    "category": "statistics",
+    "example": "A chi-square test was used to examine whether there was a significant association between gender and choice of academic major."
+  },
+  {
+    "id": "w061",
+    "word": "descriptive",
+    "pronunciation": "/dɪˈskrɪptɪv/",
+    "chinese": "描述性的",
+    "category": "statistics",
+    "example": "I began by computing descriptive statistics, including means and frequencies, to get an overview of the dataset."
+  },
+  {
+    "id": "w062",
+    "word": "inferential",
+    "pronunciation": "/ˌɪnfəˈrenʃl/",
+    "chinese": "推断性的",
+    "category": "statistics",
+    "example": "Inferential statistics allow me to draw conclusions about the population based on the sample data from my study."
+  },
+  {
+    "id": "w063",
+    "word": "variance",
+    "pronunciation": "/ˈveəriəns/",
+    "chinese": "方差",
+    "category": "statistics",
+    "example": "The analysis of variance showed that the three groups differed significantly in their post-test performance."
+  },
+  {
+    "id": "w064",
+    "word": "mean",
+    "pronunciation": "/miːn/",
+    "chinese": "平均值",
+    "category": "statistics",
+    "example": "The mean score of the experimental group was 15 points higher than that of the control group."
+  },
+  {
+    "id": "w065",
+    "word": "median",
+    "pronunciation": "/ˈmiːdiən/",
+    "chinese": "中位数",
+    "category": "statistics",
+    "example": "I reported the median rather than the mean because the data was skewed by a few extreme outliers."
+  },
+  {
+    "id": "w066",
+    "word": "mode",
+    "pronunciation": "/məʊd/",
+    "chinese": "众数",
+    "category": "statistics",
+    "example": "The mode was 4 on a 5-point Likert scale, suggesting that most participants agreed with the statement."
+  },
+  {
+    "id": "w067",
+    "word": "distribution",
+    "pronunciation": "/ˌdɪstrɪˈbjuːʃn/",
+    "chinese": "分布",
+    "category": "statistics",
+    "example": "The distribution of scores was approximately normal, which justified my use of parametric tests."
+  },
+  {
+    "id": "w068",
+    "word": "sample size",
+    "pronunciation": "/ˈsɑːmpl saɪz/",
+    "chinese": "样本量",
+    "category": "statistics",
+    "example": "I conducted a power analysis to determine that a sample size of 200 participants was needed to detect a medium effect."
+  },
+  {
+    "id": "w069",
+    "word": "research interests",
+    "pronunciation": "/rɪˈsɜːtʃ ˈɪntrəsts/",
+    "chinese": "研究兴趣",
+    "category": "interview_terms",
+    "example": "My research interests lie at the intersection of language education, teacher identity, and professional development."
+  },
+  {
+    "id": "w070",
+    "word": "academic background",
+    "pronunciation": "/ˌækəˈdemɪk ˈbækɡraʊnd/",
+    "chinese": "学术背景",
+    "category": "interview_terms",
+    "example": "My academic background includes a bachelor's degree in English Education and a master's in TESOL, with a strong focus on curriculum design."
+  },
+  {
+    "id": "w071",
+    "word": "faculty",
+    "pronunciation": "/ˈfækəlti/",
+    "chinese": "院系；教职员工",
+    "category": "interview_terms",
+    "example": "I was especially drawn to this program because of the faculty's expertise in second language acquisition and bilingual education."
+  },
+  {
+    "id": "w072",
+    "word": "mentor",
+    "pronunciation": "/ˈmentɔː/",
+    "chinese": "导师",
+    "category": "interview_terms",
+    "example": "I hope to work closely with a mentor who can guide me through the process of designing and conducting rigorous doctoral research."
+  },
+  {
+    "id": "w073",
+    "word": "publication",
+    "pronunciation": "/ˌpʌblɪˈkeɪʃn/",
+    "chinese": "出版物；发表",
+    "category": "interview_terms",
+    "example": "I have authored one publication in a peer-reviewed journal on the topic of formative assessment in EFL writing instruction."
+  },
+  {
+    "id": "w074",
+    "word": "conference",
+    "pronunciation": "/ˈkɒnfərəns/",
+    "chinese": "学术会议",
+    "category": "interview_terms",
+    "example": "Last year I presented a paper at the International Conference on English Language Teaching, which was a valuable networking experience."
+  },
+  {
+    "id": "w075",
+    "word": "fellowship",
+    "pronunciation": "/ˈfeləʊʃɪp/",
+    "chinese": "奖学金；研究会",
+    "category": "interview_terms",
+    "example": "I was honored to receive a competitive research fellowship that allowed me to conduct fieldwork in three different provinces."
+  },
+  {
+    "id": "w076",
+    "word": "interdisciplinary",
+    "pronunciation": "/ˌɪntəˈdɪsəplɪnəri/",
+    "chinese": "跨学科的",
+    "category": "interview_terms",
+    "example": "I value an interdisciplinary approach, drawing on insights from linguistics, psychology, and sociology to inform my educational research."
+  },
+  {
+    "id": "w077",
+    "word": "innovative",
+    "pronunciation": "/ˈɪnəvətɪv/",
+    "chinese": "创新的",
+    "category": "interview_terms",
+    "example": "My proposed research uses an innovative combination of eye-tracking technology and think-aloud protocols to study reading comprehension."
+  },
+  {
+    "id": "w078",
+    "word": "rigorous",
+    "pronunciation": "/ˈrɪɡərəs/",
+    "chinese": "严谨的",
+    "category": "interview_terms",
+    "example": "I understand that doctoral research demands a rigorous approach to data collection, analysis, and interpretation."
+  },
+  {
+    "id": "w079",
+    "word": "proposal",
+    "pronunciation": "/prəˈpəʊzl/",
+    "chinese": "研究计划",
+    "category": "interview_terms",
+    "example": "My research proposal outlines a three-year study examining how novice teachers develop their professional identity in rural schools."
+  },
+  {
+    "id": "w080",
+    "word": "collaboration",
+    "pronunciation": "/kəˌlæbəˈreɪʃn/",
+    "chinese": "合作",
+    "category": "interview_terms",
+    "example": "I thrive in collaborative environments and look forward to working with peers and faculty on joint research projects."
+  },
+  {
+    "word": "Action Research",
+    "chinese": "行动研究",
+    "category": "research_methods",
+    "example": "",
+    "source": "preloaded",
+    "id": "w081",
+    "pronunciation": ""
+  },
+  {
+    "word": "Differentiated Instruction",
+    "chinese": "差异化教学 / 因材施教",
+    "category": "education_theory",
+    "example": "",
+    "source": "preloaded",
+    "id": "w082",
+    "pronunciation": ""
+  },
+  {
+    "word": "Praxis",
+    "chinese": "实践 / 理论与实践的结合",
+    "category": "education_theory",
+    "example": "",
+    "source": "preloaded",
+    "id": "w083",
+    "pronunciation": ""
+  },
+  {
+    "word": "Andragogy",
+    "chinese": "成人教学法",
+    "category": "education_theory",
+    "example": "",
+    "source": "preloaded",
+    "id": "w084",
+    "pronunciation": ""
+  },
+  {
+    "word": "Conceptual Framework",
+    "chinese": "概念框架",
+    "category": "academic_writing",
+    "example": "",
+    "source": "preloaded",
+    "id": "w085",
+    "pronunciation": ""
+  },
+  {
+    "word": "Hypothesize",
+    "chinese": "假设",
+    "category": "academic_writing",
+    "example": "",
+    "source": "preloaded",
+    "id": "w086",
+    "pronunciation": ""
+  },
+  {
+    "word": "Empirical",
+    "chinese": "实证的 / 以观察和实验为依据的",
+    "category": "statistics",
+    "example": "",
+    "source": "preloaded",
+    "id": "w087",
+    "pronunciation": ""
+  },
+  {
+    "word": "Statistical Significance",
+    "chinese": "统计学显著性 / 显著性差异",
+    "category": "statistics",
+    "example": "",
+    "source": "preloaded",
+    "id": "w088",
+    "pronunciation": ""
+  },
+  {
+    "word": "Generalizability",
+    "chinese": "可推广性 / 普适性",
+    "category": "statistics",
+    "example": "",
+    "source": "preloaded",
+    "id": "w089",
+    "pronunciation": ""
+  },
+  {
+    "word": "Validity and Reliability",
+    "chinese": "效度与信度",
+    "category": "statistics",
+    "example": "",
+    "source": "preloaded",
+    "id": "w090",
+    "pronunciation": ""
+  },
+  {
+    "word": "Research Gap",
+    "chinese": "研究空白 / 研究缺口",
+    "category": "interview_terms",
+    "example": "",
+    "source": "preloaded",
+    "id": "w091",
+    "pronunciation": ""
+  },
+  {
+    "word": "Feasibility",
+    "chinese": "可行性",
+    "category": "interview_terms",
+    "example": "",
+    "source": "preloaded",
+    "id": "w092",
+    "pronunciation": ""
+  },
+  {
+    "word": "Rationale",
+    "chinese": "根本原因 / 理论依据",
+    "category": "interview_terms",
+    "example": "",
+    "source": "preloaded",
+    "id": "w093",
+    "pronunciation": ""
+  },
+  {
+    "word": "Educational Equity",
+    "chinese": "教育公平",
+    "category": "other",
+    "example": "",
+    "source": "preloaded",
+    "id": "w094",
+    "pronunciation": ""
+  },
+  {
+    "word": "Marginalized",
+    "chinese": "边缘化的 / 弱势的",
+    "category": "other",
+    "example": "",
+    "source": "preloaded",
+    "id": "w095",
+    "pronunciation": ""
+  },
+  {
+    "word": "Curriculum Reform",
+    "chinese": "课程改革",
+    "category": "other",
+    "example": "",
+    "source": "preloaded",
+    "id": "w096",
+    "pronunciation": ""
+  },
+  {
+    "word": "Digital Divide",
+    "chinese": "数字鸿沟",
+    "category": "other",
+    "example": "",
+    "source": "preloaded",
+    "id": "w097",
+    "pronunciation": ""
+  },
+  {
+    "word": "Positivism",
+    "chinese": "实证主义",
+    "category": "research_methods",
+    "example": "",
+    "source": "preloaded",
+    "id": "w098",
+    "pronunciation": ""
+  },
+  {
+    "word": "Mixed-methods Sequential Explanatory Design",
+    "chinese": "混合方法顺序解释设计",
+    "category": "research_methods",
+    "example": "",
+    "source": "preloaded",
+    "id": "w099",
+    "pronunciation": ""
+  },
+  {
+    "word": "Purposive Sampling",
+    "chinese": "目的抽样 / 意向抽样",
+    "category": "research_methods",
+    "example": "",
+    "source": "preloaded",
+    "id": "w100",
+    "pronunciation": ""
+  },
+  {
+    "word": "Positionality",
+    "chinese": "研究者定位 / 主体位置",
+    "category": "research_methods",
+    "example": "",
+    "source": "preloaded",
+    "id": "w101",
+    "pronunciation": ""
+  },
+  {
+    "word": "Member Checking",
+    "chinese": "成员检验 / 受访者验证",
+    "category": "research_methods",
+    "example": "",
+    "source": "preloaded",
+    "id": "w102",
+    "pronunciation": ""
+  },
+  {
+    "word": "Zone of Proximal Development",
+    "chinese": "(n.) 最近发展区",
+    "category": "education_theory",
+    "example": "",
+    "source": "preloaded",
+    "id": "w103",
+    "pronunciation": ""
+  },
+  {
+    "word": "Transformative Learning",
+    "chinese": "变革性学习 / 转化学习",
+    "category": "education_theory",
+    "example": "",
+    "source": "preloaded",
+    "id": "w104",
+    "pronunciation": ""
+  },
+  {
+    "word": "Critical Pedagogy",
+    "chinese": "批判教育学",
+    "category": "education_theory",
+    "example": "",
+    "source": "preloaded",
+    "id": "w105",
+    "pronunciation": ""
+  },
+  {
+    "word": "Self-Efficacy",
+    "chinese": "自我效能感",
+    "category": "education_theory",
+    "example": "",
+    "source": "preloaded",
+    "id": "w106",
+    "pronunciation": ""
+  },
+  {
+    "word": "Hidden Curriculum",
+    "chinese": "隐性课程",
+    "category": "education_theory",
+    "example": "",
+    "source": "preloaded",
+    "id": "w107",
+    "pronunciation": ""
+  },
+  {
+    "word": "Conceptualization",
+    "chinese": "概念化",
+    "category": "academic_writing",
+    "example": "",
+    "source": "preloaded",
+    "id": "w108",
+    "pronunciation": ""
+  },
+  {
+    "word": "Operationalize",
+    "chinese": "操作化 / 使具有可操作性",
+    "category": "academic_writing",
+    "example": "",
+    "source": "preloaded",
+    "id": "w109",
+    "pronunciation": ""
+  },
+  {
+    "word": "Nuanced",
+    "chinese": "细致入微的 / 具有微妙差异的",
+    "category": "academic_writing",
+    "example": "",
+    "source": "preloaded",
+    "id": "w110",
+    "pronunciation": ""
+  },
+  {
+    "word": "Paucity",
+    "chinese": "匮乏 / 稀少",
+    "category": "academic_writing",
+    "example": "",
+    "source": "preloaded",
+    "id": "w111",
+    "pronunciation": ""
+  },
+  {
+    "word": "Theoretical Underpinning",
+    "chinese": "理论基础 / 理论支撑",
+    "category": "academic_writing",
+    "example": "",
+    "source": "preloaded",
+    "id": "w112",
+    "pronunciation": ""
+  },
+  {
+    "word": "Confounding Variable",
+    "chinese": "混杂变量 / 干扰变量",
+    "category": "statistics",
+    "example": "",
+    "source": "preloaded",
+    "id": "w113",
+    "pronunciation": ""
+  },
+  {
+    "word": "Statistical Power",
+    "chinese": "统计功效",
+    "category": "statistics",
+    "example": "",
+    "source": "preloaded",
+    "id": "w114",
+    "pronunciation": ""
+  },
+  {
+    "word": "Multivariate Regression",
+    "chinese": "多元回归",
+    "category": "statistics",
+    "example": "",
+    "source": "preloaded",
+    "id": "w115",
+    "pronunciation": ""
+  },
+  {
+    "word": "Longitudinal Study",
+    "chinese": "纵向研究 / 追踪研究",
+    "category": "statistics",
+    "example": "",
+    "source": "preloaded",
+    "id": "w116",
+    "pronunciation": ""
+  },
+  {
+    "word": "Methodological Rigor",
+    "chinese": "方法论的严谨性",
+    "category": "interview_terms",
+    "example": "",
+    "source": "preloaded",
+    "id": "w117",
+    "pronunciation": ""
+  },
+  {
+    "word": "Pedagogical Implications",
+    "chinese": "教学启示 / 教育意义",
+    "category": "interview_terms",
+    "example": "",
+    "source": "preloaded",
+    "id": "w118",
+    "pronunciation": ""
+  },
+  {
+    "word": "Theoretical Alignment",
+    "chinese": "理论契合度 / 理论一致性",
+    "category": "interview_terms",
+    "example": "",
+    "source": "preloaded",
+    "id": "w119",
+    "pronunciation": ""
+  },
+  {
+    "word": "Deliverable",
+    "chinese": "研究成果 / 阶段性成果",
+    "category": "interview_terms",
+    "example": "",
+    "source": "preloaded",
+    "id": "w120",
+    "pronunciation": ""
+  },
+  {
+    "word": "Scholarly Discourse",
+    "chinese": "学术对话 / 学术话语体系",
+    "category": "interview_terms",
+    "example": "",
+    "source": "preloaded",
+    "id": "w121",
+    "pronunciation": ""
+  },
+  {
+    "word": "Socioeconomic Status",
+    "chinese": "(n.) 社会经济地位",
+    "category": "other",
+    "example": "",
+    "source": "preloaded",
+    "id": "w122",
+    "pronunciation": ""
+  },
+  {
+    "word": "Professional Identity",
+    "chinese": "专业身份认同 / 职业认同",
+    "category": "other",
+    "example": "",
+    "source": "preloaded",
+    "id": "w123",
+    "pronunciation": ""
+  },
+  {
+    "word": "Formative",
+    "chinese": "vs. Summative Assessment (n.) 形成性评价与终结性评价",
+    "category": "other",
+    "example": "",
+    "source": "preloaded",
+    "id": "w124",
+    "pronunciation": ""
+  },
+  {
+    "word": "Attrition Rate",
+    "chinese": "流失率（常指教师流失或样本流失）",
+    "category": "other",
+    "example": "",
+    "source": "preloaded",
+    "id": "w125",
+    "pronunciation": ""
+  }
+]
