@@ -1,18 +1,17 @@
 /**
  * stt.js — 语音识别（Speech-to-Text）封装
- * 使用浏览器 Web Speech API 的 SpeechRecognition
- * 仅在 Chrome/Edge 中可用，Firefox 不支持
+ * 处理浏览器自动暂停导致的识别中断：自动重启并累积文本
  */
 
 const STT = (() => {
     let recognition = null;
     let isListening = false;
+    let userStopped = false;      // 用户主动停止 vs 浏览器自动暂停
+    let fullTranscript = '';      // 累积全部识别文本
     let onResultCallback = null;
     let onEndCallback = null;
+    let onErrorCallback = null;
 
-    /**
-     * 获取 SpeechRecognition 实例
-     */
     function getRecognition() {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         if (!SpeechRecognition) return null;
@@ -20,20 +19,13 @@ const STT = (() => {
         if (!recognition) {
             recognition = new SpeechRecognition();
             recognition.lang = 'en-US';
-            recognition.interimResults = true;    // 实时显示识别过程
-            recognition.continuous = true;         // 持续监听
+            recognition.interimResults = true;
+            recognition.continuous = true;
             recognition.maxAlternatives = 1;
         }
         return recognition;
     }
 
-    /**
-     * 开始语音识别
-     * @param {function} onResult - 回调(transcript, isFinal)
-     * @param {function} onEnd - 识别结束回调
-     * @param {function} onError - 错误回调
-     * @returns {boolean} 是否成功启动
-     */
     function start(onResult, onEnd, onError) {
         const recog = getRecognition();
         if (!recog) {
@@ -41,47 +33,57 @@ const STT = (() => {
             return false;
         }
 
-        // 如果正在监听，先停止
-        if (isListening) {
-            try { recog.stop(); } catch (e) { /* ignore */ }
-        }
-
+        stop();
+        fullTranscript = '';
+        userStopped = false;
         onResultCallback = onResult;
         onEndCallback = onEnd;
+        onErrorCallback = onError;
 
         recog.onresult = (event) => {
-            let interim = '';
-            let final = '';
+            let newFinal = '';
             for (let i = event.resultIndex; i < event.results.length; i++) {
-                const transcript = event.results[i][0].transcript;
                 if (event.results[i].isFinal) {
-                    final += transcript + ' ';
-                } else {
-                    interim += transcript;
+                    newFinal += event.results[i][0].transcript + ' ';
                 }
             }
+            // 累积最终结果
+            if (newFinal) {
+                fullTranscript += newFinal;
+            }
+            // 发送累积文本 + 当前临时结果
             if (onResultCallback) {
-                onResultCallback((final + interim).trim(), !!final);
+                const interim = Array.from(event.results)
+                    .filter(r => !r.isFinal)
+                    .map(r => r[0].transcript)
+                    .join(' ');
+                onResultCallback((fullTranscript + interim).trim(), !!newFinal);
             }
         };
 
         recog.onerror = (event) => {
+            if (event.error === 'no-speech' || event.error === 'aborted') return;
+            // 其他错误不自动重启
+            userStopped = true;
             isListening = false;
-            if (event.error === 'no-speech') {
-                // 没有检测到语音，不算错误，继续监听
-                return;
-            }
-            if (event.error === 'aborted') {
-                return;
-            }
-            if (onError) {
-                onError(new Error(`语音识别错误: ${event.error}`));
-            }
+            if (onErrorCallback) onErrorCallback(new Error(event.error));
         };
 
         recog.onend = () => {
             isListening = false;
-            if (onEndCallback) onEndCallback();
+            // 如果不是用户主动停止，自动重启继续监听
+            if (!userStopped) {
+                try {
+                    recog.start();
+                    isListening = true;
+                } catch (e) {
+                    // 重启失败，结束
+                    if (onEndCallback) onEndCallback();
+                }
+            } else {
+                // 用户主动停止
+                if (onEndCallback) onEndCallback();
+            }
         };
 
         try {
@@ -95,61 +97,25 @@ const STT = (() => {
         }
     }
 
-    /**
-     * 停止语音识别
-     */
     function stop() {
+        userStopped = true;  // 标记为用户主动停止
         if (recognition && isListening) {
-            try {
-                recognition.stop();
-            } catch (e) {
-                /* ignore */
-            }
+            try { recognition.stop(); } catch (e) {}
             isListening = false;
         }
-        return getCurrentTranscript();
     }
 
-    /**
-     * 获取当前已识别的文本（用于停止时获取最终结果）
-     */
-    let _currentTranscript = '';
-    function setCurrentTranscript(text) {
-        _currentTranscript = text;
-    }
-    function getCurrentTranscript() {
-        return _currentTranscript;
-    }
-
-    /**
-     * 重置识别器状态
-     */
     function reset() {
         stop();
-        _currentTranscript = '';
+        fullTranscript = '';
         recognition = null;
     }
 
-    /**
-     * 是否正在监听
-     */
-    function isActive() {
-        return isListening;
-    }
+    function isActive() { return isListening; }
 
-    /**
-     * 检查浏览器是否支持语音识别
-     */
     function isSupported() {
         return !!(window.SpeechRecognition || window.webkitSpeechRecognition);
     }
 
-    return {
-        start,
-        stop,
-        reset,
-        isActive,
-        isSupported,
-        setCurrentTranscript,
-    };
+    return { start, stop, reset, isActive, isSupported };
 })();
