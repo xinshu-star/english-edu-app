@@ -95,6 +95,8 @@ const Interview = (() => {
         els.scoreResult.style.display = 'none';
         els.btnNextQuestion.style.display = 'none';
         els.btnSubmitAnswer.style.display = '';
+        els.btnSubmitAnswer.disabled = false;
+        els.btnSubmitAnswer.innerHTML = '提交评分';
         els.recordingIndicator.style.display = 'none';
         els.recordingActions.style.display = 'none';
         els.btnRecord.style.display = '';
