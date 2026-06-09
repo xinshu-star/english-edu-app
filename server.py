@@ -13,7 +13,7 @@ import requests
 from dotenv import load_dotenv
 
 # 加载 .env 文件中的环境变量
-load_dotenv()
+load_dotenv(override=True)
 
 app = Flask(__name__, static_folder="src", static_url_path="")
 CORS(app)
@@ -154,7 +154,7 @@ def kill_existing_instances():
         pass  # 清理失败不影响启动
 
 
-def find_free_port(start=5000, max_port=5020):
+def find_free_port(start=9000, max_port=9020):
     """查找可用端口"""
     import socket
     for port in range(start, max_port + 1):
