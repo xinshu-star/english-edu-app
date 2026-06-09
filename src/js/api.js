@@ -4,31 +4,39 @@
  */
 
 const API = (() => {
+    // 超时 fetch 封装
+    async function fetchWithTimeout(url, options, timeoutMs = 30000) {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), timeoutMs);
+        try {
+            const resp = await fetch(url, { ...options, signal: controller.signal });
+            return resp;
+        } finally {
+            clearTimeout(timer);
+        }
+    }
+
     /**
      * 通用聊天请求
-     * @param {Array} messages - [{role, content}, ...]
-     * @param {object} options - {temperature, max_tokens, response_format}
-     * @returns {Promise<{content: string, usage: object}>}
      */
     async function chat(messages, options = {}) {
-        const { temperature = 0.7, max_tokens = 1000, response_format = null } = options;
+        const { temperature = 0.7, max_tokens = 1000, response_format = null, timeout = 30000 } = options;
 
         const body = { messages, temperature, max_tokens };
         if (response_format) {
             body.response_format = response_format;
         }
 
-        // 附带浏览器端存储的 API Key
         const apiKey = Storage.getApiKey();
         if (apiKey) {
             body.api_key = apiKey;
         }
 
-        const resp = await fetch('/api/chat', {
+        const resp = await fetchWithTimeout('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body),
-        });
+        }, timeout);
 
         const data = await resp.json();
 
@@ -140,11 +148,11 @@ Respond ONLY with a JSON object:
         try {
             const apiKey = Storage.getApiKey();
             const body = apiKey ? { api_key: apiKey } : {};
-            const resp = await fetch('/api/health', {
+            const resp = await fetchWithTimeout('/api/health', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
-            });
+            }, 8000);
             const data = await resp.json();
             return data.apiKeyConfigured === true;
         } catch (e) {
