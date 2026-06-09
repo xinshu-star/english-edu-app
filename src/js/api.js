@@ -80,28 +80,48 @@ const API = (() => {
      * @param {Array} learnedWords - 用户已学的单词列表
      * @returns {Promise<{question: string}>}
      */
-    async function generateQuestion(learnedWords) {
-        // 取最多 15 个已学单词作为上下文
-        const wordList = learnedWords.slice(0, 15)
-            .map(w => w.word)
-            .join(', ');
+    async function generateQuestion(learnedWords, recentQuestions) {
+        // 随机取 8 个已学单词（打乱增加多样性）
+        const shuffled = [...learnedWords].sort(() => Math.random() - 0.5);
+        const wordList = shuffled.slice(0, 8).map(w => w.word).join(', ');
 
-        const systemPrompt = `You are an Education PhD admissions panel member at a Western university, interviewing a Chinese applicant.
+        // 最近问过的问题（避免重复）
+        const recentList = (recentQuestions || []).slice(-5).map(q => `"${q}"`).join(', ');
+        const avoidHint = recentList
+            ? `\nAVOID these recently asked questions: ${recentList}\nGenerate a COMPLETELY DIFFERENT question.`
+            : '';
 
-Generate ONE interview question in English that naturally incorporates or relates to 1-2 of these academic concepts: ${wordList || 'education research methodology'}.
+        const questionTypes = [
+            'research interests and motivation',
+            'methodology and research design',
+            'theoretical framework and literature',
+            'teaching experience and pedagogy',
+            'academic writing and publication',
+            'career goals and contribution',
+            'ethical considerations',
+            'interdisciplinary perspectives',
+            'challenges in education',
+            'personal experience as a learner',
+        ];
+        const randomType = questionTypes[Math.floor(Math.random() * questionTypes.length)];
 
-Guidelines:
-- The question should be realistic for a PhD interview (NOT a vocabulary test)
-- The applicant should be able to answer in 1-2 minutes
-- Use natural, conversational English
-- Focus on the applicant's research interests, academic experience, or views on education
+        const systemPrompt = `You are an Education PhD admissions panel member interviewing an applicant.
 
-Respond ONLY with a JSON object: {"question": "the interview question here"}`;
+Generate ONE interview question in English. Topic area: ${randomType}.
+Reference vocabulary (optional): ${wordList || 'education research'}.${avoidHint}
+
+Rules:
+- Sound like a real professor asking a real interview question
+- Vary your question style: sometimes ask "how would you...", sometimes "can you describe...", sometimes "what is your opinion on..."
+- NOT a vocabulary quiz — the words should feel natural in context
+- 1-2 minute answer length
+
+Respond ONLY with JSON: {"question": "..."}`;
 
         const { content } = await chat([
             { role: 'system', content: systemPrompt },
-            { role: 'user', content: 'Generate an interview question.' },
-        ], { temperature: 0.9, max_tokens: 200 });
+            { role: 'user', content: 'Ask me an interview question.' },
+        ], { temperature: 0.95, max_tokens: 200 });
 
         return extractJSON(content);
     }
