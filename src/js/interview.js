@@ -8,33 +8,32 @@ const Interview = (() => {
     let userAnswer = '';
     let isRecording = false;
     let isSubmitting = false;
-    let useFallback = false;  // AI 不可用时使用离线题目
+    let useFallback = false;
     let fallbackIndex = 0;
-    let fallbackQuestions = [];
+    // 内置备用题库（始终可用）
+    const builtinQuestions = [
+        { question: "Can you tell us about your research interests and why you chose this area?" },
+        { question: "What research methodology are you most familiar with, and why do you prefer it?" },
+        { question: "How do you think your research could contribute to the field of education?" },
+        { question: "What challenges do you anticipate in your doctoral research?" },
+        { question: "Can you describe a research article that has significantly influenced your thinking?" },
+        { question: "How would you describe the relationship between educational theory and classroom practice?" },
+        { question: "What role should quantitative methods play in educational research?" },
+        { question: "Why do you believe a doctoral degree is important for your career goals?" },
+        { question: "How do you plan to ensure the validity and reliability of your research?" },
+        { question: "What do you think are the biggest challenges facing education today?" },
+    ];
+    let fallbackQuestions = [...builtinQuestions];
     let els = {};
 
     function init(elementMap) {
         els = elementMap;
         bindEvents();
-        loadFallbackQuestions();
-    }
-
-    async function loadFallbackQuestions() {
-        try {
-            const resp = await fetch('/data/interview_questions_fallback.json');
-            if (resp.ok) {
-                fallbackQuestions = await resp.json();
-            }
-        } catch (e) {
-            // 离线题目加载失败，使用硬编码备用
-            fallbackQuestions = [
-                { question: "Can you tell us about your research interests and why you chose this area?" },
-                { question: "What research methodology are you most familiar with, and why do you prefer it?" },
-                { question: "How do you think your research could contribute to the field of education?" },
-                { question: "What challenges do you anticipate in your doctoral research, and how would you address them?" },
-                { question: "Can you describe a research article that has significantly influenced your thinking?" },
-            ];
-        }
+        // 异步加载更多备用题（不阻塞）
+        fetch('/data/interview_questions_fallback.json')
+            .then(r => r.ok && r.json())
+            .then(data => { if (data?.length) fallbackQuestions = data; })
+            .catch(() => {});
     }
 
     function bindEvents() {
@@ -52,22 +51,27 @@ const Interview = (() => {
     // ===== 面试会话 =====
 
     async function startSession() {
-        // 检查 API 是否可用
-        const hasApi = await API.testConnection();
-        useFallback = !hasApi;
-        fallbackIndex = 0;
-
+        // 显示加载状态
         els.interviewEmpty.style.display = 'none';
+        els.scoreResult.style.display = 'none';
+        els.btnNextQuestion.style.display = 'none';
+        els.btnPlayQuestion.innerHTML = '<span class="spinner"></span> 正在连接AI...';
+        els.btnPlayQuestion.disabled = true;
+
+        try {
+            const hasApi = await API.testConnection();
+            useFallback = !hasApi;
+        } catch (e) {
+            useFallback = true;
+        }
+
+        fallbackIndex = 0;
         resetUI();
         updateStatsRow();
 
-        if (useFallback && fallbackQuestions.length > 0) {
-            els.interviewEmptyDesc.textContent = '💡 AI 服务未配置，正在使用离线备用题目。如需 AI 智能出题，请在设置中配置 API Key。';
+        if (useFallback) {
+            els.interviewEmptyDesc.textContent = '💡 使用离线模式。如需 AI 智能出题，请在设置中配置 DeepSeek API Key。';
             showOfflineQuestion();
-        } else if (useFallback) {
-            els.interviewEmpty.style.display = '';
-            els.interviewEmptyDesc.textContent = 'AI 服务不可用，且没有离线题目。请检查网络或在设置中配置 API Key。';
-            return;
         } else {
             await generateNewQuestion();
         }
@@ -84,15 +88,13 @@ const Interview = (() => {
             renderQuestion();
         } catch (e) {
             console.error('生成问题失败:', e);
-            // 降级到离线题目
             useFallback = true;
-            els.interviewEmptyDesc.textContent = '⚠️ AI 出题失败，已切换到离线备用题目。';
+            els.interviewEmptyDesc.textContent = '⚠️ AI 出题失败（' + (e.message || '网络错误') + '），使用备用题库。';
             showOfflineQuestion();
         }
     }
 
     function showOfflineQuestion() {
-        if (fallbackQuestions.length === 0) return;
         currentQuestion = fallbackQuestions[fallbackIndex % fallbackQuestions.length].question;
         fallbackIndex++;
         renderQuestion();
@@ -100,13 +102,10 @@ const Interview = (() => {
 
     function renderQuestion() {
         resetUI();
-
         els.btnPlayQuestion.disabled = false;
         els.btnPlayQuestion.innerHTML = '🔊 播放问题';
         els.questionText.textContent = currentQuestion;
         els.questionText.style.display = 'none';
-
-        // 自动播放问题
         setTimeout(() => playQuestion(), 500);
     }
 
@@ -150,54 +149,34 @@ const Interview = (() => {
     // ===== 语音录制 =====
 
     function toggleRecording() {
-        if (isRecording) {
-            stopRecording();
-            return;
-        }
-
-        // 检查支持
+        if (isRecording) { stopRecording(); return; }
         if (!STT.isSupported()) {
-            els.transcriptBox.textContent = '⚠️ 你的浏览器不支持语音识别。请使用下方文本框输入回答。推荐使用 Chrome 或 Edge 浏览器。';
+            els.transcriptBox.textContent = '⚠️ 浏览器不支持语音识别。请在下方文本框输入回答。（推荐 Chrome/Edge）';
             els.textAnswer.style.display = '';
             els.textAnswer.focus();
             return;
         }
-
-        // 开始录音
         const started = STT.start(
-            // onResult
             (transcript, isFinal) => {
                 els.transcriptBox.textContent = transcript;
                 userAnswer = transcript;
-                if (isFinal) {
-                    els.transcriptBox.style.color = 'var(--text-primary)';
-                } else {
-                    els.transcriptBox.style.color = 'var(--text-muted)';
-                }
+                els.transcriptBox.style.color = isFinal ? 'var(--text-primary)' : 'var(--text-muted)';
             },
-            // onEnd
             () => {
                 isRecording = false;
                 els.btnRecord.style.display = 'none';
                 els.recordingIndicator.style.display = 'none';
-                els.btnRecord.className = 'btn-record';
                 els.recordingActions.style.display = 'none';
-                if (userAnswer) {
-                    els.btnSubmitAnswer.disabled = false;
-                }
+                if (userAnswer) els.btnSubmitAnswer.disabled = false;
             },
-            // onError
             (err) => {
                 isRecording = false;
                 els.recordingIndicator.style.display = 'none';
-                els.btnRecord.className = 'btn-record';
-                els.btnRecord.textContent = '🎤 点击开始录音';
                 els.recordingActions.style.display = 'none';
-                els.transcriptBox.textContent = `⚠️ 语音识别出错: ${err.message}\n请使用下方文本框输入回答。`;
+                els.transcriptBox.textContent = '⚠️ 语音识别出错，请使用文字输入。';
                 els.textAnswer.style.display = '';
             }
         );
-
         if (started) {
             isRecording = true;
             els.btnRecord.className = 'btn-record recording';
@@ -220,11 +199,7 @@ const Interview = (() => {
         els.recordingIndicator.style.display = 'none';
         els.recordingActions.style.display = 'none';
         els.btnRecord.style.display = 'none';
-        els.btnRecord.className = 'btn-record';
-
-        if (!userAnswer) {
-            els.transcriptBox.textContent = '(未识别到语音内容，请重新录音或使用文字输入)';
-        }
+        if (!userAnswer) els.transcriptBox.textContent = '(未识别到语音，请重新录音或使用文字输入)';
     }
 
     function reRecord() {
@@ -242,26 +217,19 @@ const Interview = (() => {
     // ===== 提交评分 =====
 
     async function submitAnswer() {
-        // 获取最终答案
         const textAnswer = els.textAnswer.value.trim();
-        if (textAnswer) {
-            userAnswer = textAnswer;
-        }
-
+        if (textAnswer) userAnswer = textAnswer;
         if (!userAnswer) {
             els.transcriptBox.textContent = '⚠️ 请先录音或输入文字回答，再提交评分。';
             return;
         }
-
         if (isSubmitting) return;
         isSubmitting = true;
-
         els.btnSubmitAnswer.disabled = true;
         els.btnSubmitAnswer.innerHTML = '<span class="spinner"></span> AI 评分中...';
 
         try {
             if (useFallback) {
-                // 离线模式：显示自评指导
                 showFallbackResult();
             } else {
                 const result = await API.scoreAnswer(currentQuestion, userAnswer);
@@ -271,7 +239,6 @@ const Interview = (() => {
             console.error('评分失败:', e);
             showFallbackResult();
         }
-
         isSubmitting = false;
         els.btnSubmitAnswer.style.display = 'none';
         els.btnNextQuestion.style.display = '';
@@ -279,45 +246,19 @@ const Interview = (() => {
 
     function showScoreResult(result) {
         const { score, feedback, strengths, weaknesses } = result;
-
-        let scoreColor;
-        let scoreLabel;
-        if (score >= 80) {
-            scoreColor = 'var(--success)';
-            scoreLabel = '优秀';
-        } else if (score >= 60) {
-            scoreColor = 'var(--primary)';
-            scoreLabel = '良好';
-        } else {
-            scoreColor = 'var(--danger)';
-            scoreLabel = '需要改进';
-        }
-
+        let scoreColor = score >= 80 ? 'var(--success)' : score >= 60 ? 'var(--primary)' : 'var(--danger)';
+        let scoreLabel = score >= 80 ? '优秀' : score >= 60 ? '良好' : '需要改进';
         let html = `
             <div class="score-number" style="color:${scoreColor}">${score}</div>
             <div class="score-label">评级: ${scoreLabel}</div>
-            <div class="feedback-text">${escapeHtml(feedback)}</div>
-        `;
-
-        if (strengths && strengths.length > 0) {
-            html += `<div class="strength-item">💪 亮点: ${escapeHtml(strengths[0])}</div>`;
-        }
-        if (weaknesses && weaknesses.length > 0) {
-            html += `<div class="weakness-item">📝 改进: ${escapeHtml(weaknesses[0])}</div>`;
-        }
-
-        // 不及格提醒
+            <div class="feedback-text">${escapeHtml(feedback)}</div>`;
+        if (strengths?.length) html += `<div class="strength-item">💪 亮点: ${escapeHtml(strengths[0])}</div>`;
+        if (weaknesses?.length) html += `<div class="weakness-item">📝 改进: ${escapeHtml(weaknesses[0])}</div>`;
         const threshold = Storage.getSettings().scoringThreshold;
-        if (score < threshold) {
-            html += `<div class="retry-notice">⚠️ 此题得分低于 ${threshold} 分，已加入复习队列，请稍后重新练习。</div>`;
-        }
-
+        if (score < threshold) html += `<div class="retry-notice">⚠️ 此题得分低于 ${threshold} 分，已加入复习队列。</div>`;
         els.scoreResult.innerHTML = html;
         els.scoreResult.style.display = '';
-
-        // 保存记录
         Storage.addInterviewRecord(currentQuestion, userAnswer, score, feedback, strengths, weaknesses);
-
         updateStatsRow();
         updateRetryBadge();
     }
@@ -326,19 +267,12 @@ const Interview = (() => {
         els.scoreResult.innerHTML = `
             <div style="text-align:center;padding:20px;">
                 <h4>📋 自评模式</h4>
-                <p style="color:var(--text-secondary);margin-top:8px;">AI 评分暂不可用，请根据以下标准自我评估：</p>
+                <p style="color:var(--text-secondary);margin-top:8px;">AI 评分暂不可用，请参考以下标准自行评估：</p>
                 <div style="text-align:left;margin-top:12px;font-size:14px;line-height:1.8;">
-                    1. 回答是否切题？（相关度）<br>
-                    2. 是否使用了学术/教育学术语？（词汇运用）<br>
-                    3. 回答结构是否清晰？（逻辑性）<br>
-                    4. 是否有深度思考？（批判性思维）
+                    1. 回答是否切题？<br>2. 是否使用了学术术语？<br>3. 结构是否清晰？<br>4. 是否有深度思考？
                 </div>
-                <p style="margin-top:12px;color:var(--text-muted);">你的回答: "${userAnswer.slice(0, 100)}${userAnswer.length > 100 ? '...' : ''}"</p>
-            </div>
-        `;
+            </div>`;
         els.scoreResult.style.display = '';
-
-        // 保存记录（无 AI 评分）
         Storage.addInterviewRecord(currentQuestion, userAnswer, 0, '自评模式', [], []);
         updateStatsRow();
     }
@@ -347,21 +281,13 @@ const Interview = (() => {
         resetUI();
         updateStatsRow();
         updateRetryBadge();
-
-        if (useFallback) {
-            showOfflineQuestion();
-        } else {
-            generateNewQuestion();
-        }
+        if (useFallback) { showOfflineQuestion(); }
+        else { generateNewQuestion(); }
     }
 
     function reviewFromQueue() {
         const queue = Storage.getInterviewQueue();
-        if (queue.length === 0) {
-            els.transcriptBox.textContent = '复习队列为空，继续练习新题吧！';
-            return;
-        }
-
+        if (queue.length === 0) { els.transcriptBox.textContent = '复习队列为空。'; return; }
         const next = queue[0];
         Storage.removeFromInterviewQueue(next.id);
         currentQuestion = next.question;
@@ -369,24 +295,19 @@ const Interview = (() => {
         updateRetryBadge();
     }
 
-    // ===== UI 更新 =====
-
     function updateStatsRow() {
         const stats = Storage.getInterviewStats();
         els.interviewStats.innerHTML = `
             <span class="stat-chip neutral">📊 总练习: ${stats.total} 题</span>
             <span class="stat-chip ${stats.avgScore >= 60 ? 'success' : 'danger'}">📈 平均分: ${stats.avgScore}</span>
-            <span class="stat-chip neutral">📅 今日: ${stats.todayCount} 题</span>
-        `;
+            <span class="stat-chip neutral">📅 今日: ${stats.todayCount} 题</span>`;
     }
 
     function updateRetryBadge() {
         const queue = Storage.getInterviewQueue();
-        const count = queue.length;
         const span = document.getElementById('retryCount');
-        if (span) span.textContent = count;
-
-        els.btnRetryQueue.style.display = count > 0 ? '' : 'none';
+        if (span) span.textContent = queue.length;
+        els.btnRetryQueue.style.display = queue.length > 0 ? '' : 'none';
     }
 
     function escapeHtml(str) {
@@ -398,15 +319,10 @@ const Interview = (() => {
     function onShow() {
         updateStatsRow();
         updateRetryBadge();
-
-        const stats = Storage.getInterviewStats();
         const remembered = Storage.getRememberedCount();
-
-        if (remembered === 0) {
-            els.interviewEmptyDesc.textContent = '先去"单词记忆练习"学习一些单词吧，AI 会根据你学过的词出面试题。';
-        } else {
-            els.interviewEmptyDesc.textContent = `已学单词: ${remembered} 个 | AI 将根据你学过的单词生成教育学面试问题`;
-        }
+        els.interviewEmptyDesc.textContent = remembered === 0
+            ? '先去"单词记忆练习"学习一些单词吧，AI 会根据你学过的词出面试题。'
+            : `已学单词: ${remembered} 个 | AI 将根据你学过的单词生成教育学面试问题`;
     }
 
     return { init, onShow };

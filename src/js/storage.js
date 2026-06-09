@@ -64,21 +64,37 @@ const Storage = (() => {
      */
     async function initWords() {
         let words = getWords();
-        if (words.length === 0) {
-            try {
-                const resp = await fetch('/data/vocabulary.json');
-                if (resp.ok) {
-                    const data = await resp.json();
-                    words = data.map((w, i) => ({
-                        ...w,
-                        id: w.id || `w${String(i + 1).padStart(3, '0')}`,
-                        source: 'preloaded',
-                    }));
+        // 总是从服务器获取最新词库，检测是否有更新
+        try {
+            const resp = await fetch('/data/vocabulary.json');
+            if (resp.ok) {
+                const data = await resp.json();
+                const serverWords = data.map((w, i) => ({
+                    ...w,
+                    id: w.id || `w${String(i + 1).padStart(3, '0')}`,
+                    source: 'preloaded',
+                }));
+                // 如果服务器词库比本地多（或有不同），合并更新
+                if (serverWords.length > words.length) {
+                    // 保留用户的 progress 数据，只更新单词本身
+                    const existingMap = {};
+                    words.forEach(w => { existingMap[w.id] = w; });
+                    const merged = serverWords.map(sw => {
+                        // 保留本地已有的单词（可能用户修改过）
+                        if (existingMap[sw.id]) {
+                            return { ...sw, ...existingMap[sw.id], id: sw.id };
+                        }
+                        return sw;
+                    });
+                    words = merged;
+                    saveWords(words);
+                } else if (words.length === 0) {
+                    words = serverWords;
                     saveWords(words);
                 }
-            } catch (e) {
-                console.error('Storage: 加载预置单词失败', e);
             }
+        } catch (e) {
+            console.error('Storage: 加载预置单词失败', e);
         }
         return words;
     }
