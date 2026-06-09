@@ -439,7 +439,7 @@ const Storage = (() => {
         return history;
     }
 
-    function addInterviewRecord(question, answer, score, feedback, strengths, weaknesses) {
+    function addInterviewRecord(question, answer, score, feedback, strengths, weaknesses, referenceAnswer) {
         const history = getInterviewHistory();
         const record = {
             id: `intv_${Date.now()}`,
@@ -450,12 +450,13 @@ const Storage = (() => {
             feedback,
             strengths: strengths || [],
             weaknesses: weaknesses || [],
+            referenceAnswer: referenceAnswer || '',
             needsRetry: score < getSettings().scoringThreshold,
         };
         history.push(record);
         save(KEYS.INTERVIEW, history);
 
-        // 不及格的加入复习队列
+        // 不及格的加入复习队列（带参考答案）
         if (record.needsRetry) {
             addToInterviewQueue(record);
         }
@@ -495,6 +496,8 @@ const Storage = (() => {
                 question: record.question,
                 score: record.score,
                 date: record.date,
+                referenceAnswer: record.referenceAnswer || '',
+                userAnswer: record.answer || '',
             });
             save(KEYS.INTERVIEW_QUEUE, queue);
         }

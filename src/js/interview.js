@@ -204,24 +204,39 @@ const Interview = (() => {
         els.btnSubmitAnswer.disabled = true;
         els.btnSubmitAnswer.innerHTML = '<span class="spinner"></span> AI 评分中...';
 
+        let scoreResult = null;
+        let refAnswer = '';
+
         try {
             if (aiOk) {
-                const result = await API.scoreAnswer(currentQuestion, userAnswer);
-                showResult(result);
-            } else {
-                showFallbackResult();
+                scoreResult = await API.scoreAnswer(currentQuestion, userAnswer);
+                // 同时生成参考答案
+                try {
+                    const ref = await API.generateReferenceAnswer(currentQuestion);
+                    refAnswer = ref.answer;
+                } catch (e) { /* 参考答案生成失败不影响主流程 */ }
             }
         } catch (e) {
             aiOk = false;
-            showFallbackResult();
         }
 
+        if (scoreResult) {
+            showResult(scoreResult, refAnswer);
+            const t = Storage.getSettings().scoringThreshold;
+            Storage.addInterviewRecord(currentQuestion, userAnswer, scoreResult.score, scoreResult.feedback, scoreResult.strengths, scoreResult.weaknesses, refAnswer);
+            if (scoreResult.score < t) updateRetryBadge();
+        } else {
+            showFallbackResult();
+            Storage.addInterviewRecord(currentQuestion, userAnswer, 0, '自评模式', [], [], '');
+        }
+
+        updateStatsRow();
         isSubmitting = false;
         els.btnSubmitAnswer.style.display = 'none';
         els.btnNextQuestion.style.display = '';
     }
 
-    function showResult(result) {
+    function showResult(result, refAnswer) {
         const { score, feedback, strengths, weaknesses } = result;
         const color = score >= 80 ? 'var(--success)' : score >= 60 ? 'var(--primary)' : 'var(--danger)';
         const label = score >= 80 ? '优秀' : score >= 60 ? '良好' : '需要改进';
@@ -231,13 +246,17 @@ const Interview = (() => {
             <div class="feedback-text">${esc(feedback)}</div>`;
         if (strengths?.length) html += `<div class="strength-item">💪 亮点: ${esc(strengths[0])}</div>`;
         if (weaknesses?.length) html += `<div class="weakness-item">📝 改进: ${esc(weaknesses[0])}</div>`;
+        // 参考答案
+        if (refAnswer) {
+            html += `<div class="reference-answer">
+                <div class="ref-label">📝 AI 参考答案</div>
+                <div class="ref-text">${esc(refAnswer)}</div>
+            </div>`;
+        }
         const t = Storage.getSettings().scoringThreshold;
-        if (score < t) html += `<div class="retry-notice">⚠️ 低于 ${t} 分，已加入复习队列。</div>`;
+        if (score < t) html += `<div class="retry-notice">⚠️ 低于 ${t} 分，已加入错题库。</div>`;
         els.scoreResult.innerHTML = html;
         els.scoreResult.style.display = '';
-        Storage.addInterviewRecord(currentQuestion, userAnswer, score, feedback, strengths, weaknesses);
-        updateStatsRow();
-        updateRetryBadge();
     }
 
     function showFallbackResult() {
@@ -250,8 +269,6 @@ const Interview = (() => {
                 </div>
             </div>`;
         els.scoreResult.style.display = '';
-        Storage.addInterviewRecord(currentQuestion, userAnswer, 0, '自评模式', [], []);
-        updateStatsRow();
     }
 
     function nextQuestion() {
@@ -263,9 +280,17 @@ const Interview = (() => {
 
     function reviewFromQueue() {
         const queue = Storage.getInterviewQueue();
-        if (queue.length === 0) { els.transcriptBox.textContent = '复习队列为空。'; return; }
-        currentQuestion = queue[0].question;
-        Storage.removeFromInterviewQueue(queue[0].id);
+        if (queue.length === 0) { els.transcriptBox.textContent = '错题库为空，继续练习新题吧！'; return; }
+        const item = queue[0];
+        currentQuestion = item.question;
+        // 显示错题信息
+        els.scoreResult.style.display = '';
+        els.scoreResult.innerHTML = `
+            <div class="reference-answer">
+                <div class="ref-label">🔄 错题复习（得分: ${item.score}）</div>
+                ${item.referenceAnswer ? `<div class="ref-text"><strong>📝 参考答案：</strong><br>${esc(item.referenceAnswer)}</div>` : ''}
+            </div>`;
+        Storage.removeFromInterviewQueue(item.id);
         renderQuestion();
         updateRetryBadge();
     }

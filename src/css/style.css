@@ -827,6 +827,29 @@ body {
 .score-result .strength-item { color: var(--success); }
 .score-result .weakness-item { color: var(--danger); }
 
+/* ===== 参考答案 ===== */
+.reference-answer {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: #F7FAFD;
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-md);
+    text-align: left;
+}
+
+.ref-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.ref-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
 .score-result .retry-notice {
     margin-top: 12px;
     padding: 8px 12px;

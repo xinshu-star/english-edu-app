@@ -144,6 +144,26 @@ Respond ONLY with a JSON object:
      * 检查 API 连接是否正常
      * @returns {Promise<boolean>}
      */
+    /**
+     * 生成参考答案
+     * @param {string} question - 面试问题
+     * @returns {Promise<{answer: string}>}
+     */
+    async function generateReferenceAnswer(question) {
+        const systemPrompt = `You are an excellent Education PhD candidate. Write a model answer (2-3 paragraphs, in English) to this interview question. Use academic vocabulary naturally. Sound confident but not arrogant. The answer should demonstrate critical thinking and subject knowledge.
+
+Question: "${question}"
+
+Respond ONLY with a JSON object: {"answer": "your model answer here"}`;
+
+        const { content } = await chat([
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: 'Write a model answer.' },
+        ], { temperature: 0.7, max_tokens: 400 });
+
+        return extractJSON(content);
+    }
+
     async function testConnection() {
         try {
             const apiKey = Storage.getApiKey();
@@ -164,6 +184,7 @@ Respond ONLY with a JSON object:
         chat,
         generateQuestion,
         scoreAnswer,
+        generateReferenceAnswer,
         testConnection,
     };
 })();
